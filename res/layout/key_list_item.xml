@@ -4,17 +4,19 @@
               android:layout_height="wrap_content"
               android:orientation="vertical">
 
-    <ImageView
-            android:id="@+id/icon"
-            android:layout_width="40px"
-            android:layout_height="40px"
-            android:src="@drawable/ic_launcher"/>
-
     <TextView
-            android:id="@+id/label"
+            android:id="@+id/full_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@+id/label"
-            android:textSize="20px"/>
+            android:textSize="16pt"/>
+
+
+    <TextView
+            android:id="@+id/pgp_fingerprint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@+id/label"
+            android:textSize="12pt"/>
 
 </LinearLayout>

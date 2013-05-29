@@ -25,11 +25,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df85e5b6-a7cf-43a4-98d8-54e62d240abb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/lookout/gpg/KeyListAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/key_list_item.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/lookout/gpg/KeyListAdapter.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/lookout/gpg/KeyActivity.java" afterPath="$PROJECT_DIR$/src/com/lookout/gpg/KeyActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LookoutPG.iml" afterPath="$PROJECT_DIR$/LookoutPG.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/key_list_item.xml" afterPath="$PROJECT_DIR$/res/layout/key_list_item.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.properties" afterPath="$PROJECT_DIR$/project.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -39,13 +39,14 @@
     <file path="$PROJECT_DIR$/res/values/strings.xml" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369854036606" ignored="false" />
     <file path="/Dummy.txt" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369860660007" ignored="false" />
     <file path="/fragment.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369859466749" ignored="false" />
-    <file path="/KeyActivity.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369861752764" ignored="false" />
+    <file path="/KeyActivity.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369863429003" ignored="false" />
     <file path="$PROJECT_DIR$/../handshake/handshake_client/gen/com/lookout/handshake/R.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369856368017" ignored="false" />
     <file path="$PROJECT_DIR$/../handshake/handshake_client/gen/com/lookout/handshake/Manifest.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369856368017" ignored="false" />
     <file path="$PROJECT_DIR$/../handshake/handshake_client/project.properties" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369856368017" ignored="false" />
     <file path="$PROJECT_DIR$/../handshake/handshake_client/src/com/lookout/handshake/Handshake.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369856418327" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369857472337" ignored="false" />
     <file path="/KeyListAdapter.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369861306633" ignored="false" />
+    <file path="/key_list_item.xml" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369863452725" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,37 +161,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KeyActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="KeyActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/lookout/gpg/KeyActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="59" selection-start="1480" selection-end="1480" vertical-scroll-proportion="0.24175824">
+            <state line="32" column="57" selection-start="1010" selection-end="1010" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1600#1621#0" expanded="true" />
+                <element signature="e#2004#2020#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="key_list_item.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="key_list_item.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/res/layout/key_list_item.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="37" selection-start="665" selection-end="665" vertical-scroll-proportion="-5.1923075">
+            <state line="4" column="45" selection-start="258" selection-end="258" vertical-scroll-proportion="0.15789473">
               <folding />
             </state>
           </provider>
           <provider editor-type-id="android-designer">
             <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KeyListAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/lookout/gpg/KeyListAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="61" selection-start="1481" selection-end="1481" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
           </provider>
         </entry>
       </file>
@@ -228,8 +220,8 @@
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/src/com/lookout/gpg/KeyListAdapter.java" />
-        <option value="$PROJECT_DIR$/res/layout/key_list_item.xml" />
         <option value="$PROJECT_DIR$/src/com/lookout/gpg/KeyActivity.java" />
+        <option value="$PROJECT_DIR$/res/layout/key_list_item.xml" />
       </list>
     </option>
   </component>
@@ -602,7 +594,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964131" sideWeight="0.67270195" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964131" sideWeight="0.67270195" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32729805" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -769,32 +761,25 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/lookout/gpg/KeyListAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/com/lookout/gpg/KeyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="61" selection-start="1481" selection-end="1481" vertical-scroll-proportion="0.0">
+        <state line="32" column="57" selection-start="1010" selection-end="1010" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1600#1621#0" expanded="true" />
+            <element signature="e#2004#2020#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/key_list_item.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="37" selection-start="665" selection-end="665" vertical-scroll-proportion="-5.1923075">
+        <state line="4" column="45" selection-start="258" selection-end="258" vertical-scroll-proportion="0.15789473">
           <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/lookout/gpg/KeyActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="59" selection-start="1480" selection-end="1480" vertical-scroll-proportion="0.24175824">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
       </provider>
     </entry>
   </component>
