@@ -1,6 +1,5 @@
 package com.lookout.gpg;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.nfc.NdefMessage;
@@ -8,12 +7,11 @@ import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.NfcEvent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMessageCallback {
     NfcAdapter mNfcAdapter;
+
 
     /** Called when the activity is first created. */
     @Override
@@ -36,9 +34,8 @@ public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMe
     public NdefMessage createNdefMessage(NfcEvent event){
         String text =("Beam me up, Android!\n\n"+
                 "Beam Time: "+System.currentTimeMillis());
-        NdefMessage msg = new NdefMessage(
-                new NdefRecord[] {
-                        createMime("application/vnd.com.example.android.beam", text.getBytes())
+
+        NdefMessage msg = new NdefMessage(NdefRecord.createMime("application/vnd.com.example.android.beam", text.getBytes()));
             /**
              * The Android Application Record (AAR) is commented out. When a device
              * receives a push with an AAR in it, the application specified in the AAR
@@ -48,7 +45,7 @@ public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMe
              * uses the tag dispatch system.
              */
             //,NdefRecord.createApplicationRecord("com.example.android.beam")
-        });
+
         return msg;
     }
 

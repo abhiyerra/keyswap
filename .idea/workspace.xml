@@ -25,24 +25,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df85e5b6-a7cf-43a4-98d8-54e62d240abb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/lookout/gpg/BuildConfig.java" afterPath="$PROJECT_DIR$/gen/com/lookout/gpg/BuildConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/lookout/gpg/KeyActivity.java" afterPath="$PROJECT_DIR$/src/com/lookout/gpg/KeyActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LookoutPG.iml" afterPath="$PROJECT_DIR$/LookoutPG.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LookoutPG.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="$PROJECT_DIR$/res/values/strings.xml" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369854036606" ignored="false" />
     <file path="/Dummy.txt" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369854444049" ignored="false" />
-    <file path="/fragment.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369855419668" ignored="false" />
-    <file path="/KeyActivity.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369856452733" ignored="false" />
+    <file path="/fragment.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369859466749" ignored="false" />
+    <file path="/KeyActivity.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369859938716" ignored="false" />
     <file path="$PROJECT_DIR$/../handshake/handshake_client/gen/com/lookout/handshake/R.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369856368017" ignored="false" />
     <file path="$PROJECT_DIR$/../handshake/handshake_client/gen/com/lookout/handshake/Manifest.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369856368017" ignored="false" />
     <file path="$PROJECT_DIR$/../handshake/handshake_client/project.properties" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369856368017" ignored="false" />
     <file path="$PROJECT_DIR$/../handshake/handshake_client/src/com/lookout/handshake/Handshake.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369856418327" ignored="false" />
+    <file path="/AndroidManifest.xml" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369857472337" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +123,7 @@
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="53" selection-start="695" selection-end="695" vertical-scroll-proportion="0.0">
+            <state line="23" column="0" selection-start="1040" selection-end="1040" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -178,7 +177,7 @@
       <file leaf-file-name="KeyActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/lookout/gpg/KeyActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="35" selection-start="1308" selection-end="1308" vertical-scroll-proportion="0.4013921">
+            <state line="35" column="49" selection-start="1095" selection-end="1095" vertical-scroll-proportion="0.125">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -189,7 +188,7 @@
       <file leaf-file-name="main.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="33" selection-start="410" selection-end="410" vertical-scroll-proportion="-2.5961537">
+            <state line="6" column="8" selection-start="284" selection-end="284" vertical-scroll-proportion="-1.7307693">
               <folding />
             </state>
           </provider>
@@ -218,6 +217,7 @@
       <list>
         <option value="$PROJECT_DIR$/LookoutPG.iml" />
         <option value="$PROJECT_DIR$/res/layout/main.xml" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/com/lookout/gpg/KeyActivity.java" />
       </list>
     </option>
@@ -365,7 +365,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="AndroidLayoutSelectedEditor" value="text-editor" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -566,13 +566,13 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3286908" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32729805" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964131" sideWeight="0.6713092" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964131" sideWeight="0.67270195" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32729805" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -736,16 +736,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="53" selection-start="695" selection-end="695" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="33" selection-start="410" selection-end="410" vertical-scroll-proportion="-2.5961537">
+        <state line="6" column="8" selection-start="284" selection-end="284" vertical-scroll-proportion="-1.7307693">
           <folding />
         </state>
       </provider>
@@ -753,9 +746,16 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="0" selection-start="1040" selection-end="1040" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/lookout/gpg/KeyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="35" selection-start="1308" selection-end="1308" vertical-scroll-proportion="0.4013921">
+        <state line="35" column="49" selection-start="1095" selection-end="1095" vertical-scroll-proportion="0.125">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -819,7 +819,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
