@@ -4,19 +4,31 @@
               android:layout_height="wrap_content"
               android:orientation="vertical">
 
+
     <TextView
             android:id="@+id/full_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@+id/label"
-            android:textSize="16pt"/>
+            android:textSize="16pt" android:layout_gravity="left|center_vertical" android:layout_row="0"
+            android:layout_column="0"/>
 
+    <GridLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
-    <TextView
-            android:id="@+id/pgp_fingerprint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@+id/label"
-            android:textSize="12pt"/>
+        <TextView
+                android:id="@+id/pgp_fingerprint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@+id/label"
+                android:textSize="12pt" android:layout_gravity="center"/>
+        <ImageView
+                android:id="@+id/trust_level"
+                android:layout_width="60px"
+                android:layout_height="60px"
+                android:src="@drawable/padlock" android:layout_gravity="right|center_vertical"/>
+    </GridLayout>
+
 
 </LinearLayout>

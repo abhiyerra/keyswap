@@ -25,6 +25,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df85e5b6-a7cf-43a4-98d8-54e62d240abb" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/cross.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/padlock.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/tick.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/values-v14/styles.xml" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/lookout/gpg/KeyListAdapter.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/lookout/gpg/KeyActivity.java" afterPath="$PROJECT_DIR$/src/com/lookout/gpg/KeyActivity.java" />
@@ -36,17 +40,17 @@
     </list>
     <ignored path="LookoutPG.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="$PROJECT_DIR$/res/values/strings.xml" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369854036606" ignored="false" />
     <file path="/Dummy.txt" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369860660007" ignored="false" />
     <file path="/fragment.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369859466749" ignored="false" />
-    <file path="/KeyActivity.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369863429003" ignored="false" />
+    <file path="/KeyActivity.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369864028887" ignored="false" />
     <file path="$PROJECT_DIR$/../handshake/handshake_client/gen/com/lookout/handshake/R.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369856368017" ignored="false" />
     <file path="$PROJECT_DIR$/../handshake/handshake_client/gen/com/lookout/handshake/Manifest.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369856368017" ignored="false" />
     <file path="$PROJECT_DIR$/../handshake/handshake_client/project.properties" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369856368017" ignored="false" />
     <file path="$PROJECT_DIR$/../handshake/handshake_client/src/com/lookout/handshake/Handshake.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369856418327" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369857472337" ignored="false" />
     <file path="/KeyListAdapter.java" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369861306633" ignored="false" />
-    <file path="/key_list_item.xml" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369863452725" ignored="false" />
+    <file path="/key_list_item.xml" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369867971196" ignored="false" />
+    <file path="/themes.xml" changelist="df85e5b6-a7cf-43a4-98d8-54e62d240abb" time="1369866989536" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,15 +111,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Manifest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gen/com/lookout/gpg/Manifest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="19" selection-start="170" selection-end="170" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="R.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gen/com/lookout/gpg/R.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -125,10 +120,35 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="ic_launcher.png" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/drawable-mdpi/ic_launcher.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state line="23" column="0" selection-start="1040" selection-end="1040" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/values-v14/styles.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="22" selection-start="141" selection-end="141" vertical-scroll-proportion="-1.8">
               <folding />
             </state>
           </provider>
@@ -143,45 +163,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ant.properties" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ant.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KeyActivity.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="KeyActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/lookout/gpg/KeyActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="57" selection-start="1010" selection-end="1010" vertical-scroll-proportion="0.0">
+            <state line="55" column="44" selection-start="1880" selection-end="1880" vertical-scroll-proportion="0.375">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1600#1621#0" expanded="true" />
-                <element signature="e#2004#2020#0" expanded="true" />
+                <element signature="e#1693#1714#0" expanded="true" />
+                <element signature="e#2079#2095#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="key_list_item.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="key_list_item.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/key_list_item.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="45" selection-start="258" selection-end="258" vertical-scroll-proportion="0.15789473">
+            <state line="14" column="48" selection-start="595" selection-end="595" vertical-scroll-proportion="-1.6923077">
               <folding />
             </state>
           </provider>
           <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="padlock.png" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/padlock.png">
+          <provider selected="true" editor-type-id="images">
             <state />
           </provider>
         </entry>
@@ -221,6 +230,8 @@
         <option value="$PROJECT_DIR$/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/src/com/lookout/gpg/KeyListAdapter.java" />
         <option value="$PROJECT_DIR$/src/com/lookout/gpg/KeyActivity.java" />
+        <option value="$PROJECT_DIR$/res/values/themes.xml" />
+        <option value="$PROJECT_DIR$/res/values-v14/styles.xml" />
         <option value="$PROJECT_DIR$/res/layout/key_list_item.xml" />
       </list>
     </option>
@@ -320,6 +331,28 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values-v14" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LookoutPG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LookoutPG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -336,6 +369,42 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LookoutPG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LookoutPG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drawable-mdpi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LookoutPG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LookoutPG" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drawable-ldpi" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -396,6 +465,12 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/res/drawable-hdpi" />
+      <recent name="$PROJECT_DIR$/res/values-v14" />
+    </key>
   </component>
   <component name="RunManager" selected="Android Application.LookoutPG">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -667,42 +742,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/build.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ant.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/com/lookout/gpg/Manifest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="19" selection-start="170" selection-end="170" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LookoutPG.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="45" selection-start="334" selection-end="334" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ant.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
@@ -730,6 +770,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/gen/com/lookout/gpg/Manifest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="19" selection-start="170" selection-end="170" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/gen/com/lookout/gpg/BuildConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="19" selection-start="96" selection-end="96" vertical-scroll-proportion="0.0">
@@ -744,11 +791,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="1040" selection-end="1040" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/res/drawable-mdpi/ic_launcher.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
@@ -761,25 +806,58 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/lookout/gpg/KeyActivity.java">
+    <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="57" selection-start="1010" selection-end="1010" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1600#1621#0" expanded="true" />
-            <element signature="e#2004#2020#0" expanded="true" />
-          </folding>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="0" selection-start="1040" selection-end="1040" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values-v14/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="22" selection-start="141" selection-end="141" vertical-scroll-proportion="-1.8">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/padlock.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/key_list_item.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="45" selection-start="258" selection-end="258" vertical-scroll-proportion="0.15789473">
+        <state line="14" column="48" selection-start="595" selection-end="595" vertical-scroll-proportion="-1.6923077">
           <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/lookout/gpg/KeyActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="44" selection-start="1880" selection-end="1880" vertical-scroll-proportion="0.375">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1693#1714#0" expanded="true" />
+            <element signature="e#2079#2095#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
@@ -839,6 +917,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

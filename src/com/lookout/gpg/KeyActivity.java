@@ -13,6 +13,9 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,9 +51,9 @@ public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMe
 
     private ArrayList<Map<String, String>> buildData() {
         ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();
-        list.add(putData("Abhi Yerra", "1024D/EC92C369", "1"));
-        list.add(putData("Shane Wilton", "1024D/02C834B6", "2"));
-        list.add(putData("Derek Halliday", "1024D/33D8457A", "3"));
+        list.add(putData("Abhi Yerra", "EC92C369", "1"));
+        list.add(putData("Shane Wilton", "02C834B6", "2"));
+        list.add(putData("Derek Halliday", "33D8457A", "3"));
         return list;
     }
 
@@ -64,8 +67,20 @@ public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMe
 
     @Override
     public NdefMessage createNdefMessage(NfcEvent event){
+
         String text =("This is an encrypted item being sent!\n\n"+
                 "Beam Time: "+System.currentTimeMillis());
+
+        /*
+        try {
+            Process p = Runtime.getRuntime().exec("/data/data/info.guardianproject.gpg/app_opt/aliases/gpg --list-keys");
+            BufferedReader bf = new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+            text = bf.readLine();
+        } catch(IOException e) {
+
+        }
+        */
 
         NdefMessage msg = new NdefMessage(NdefRecord.createMime("application/vnd.com.example.android.beam", text.getBytes()));
             /**
