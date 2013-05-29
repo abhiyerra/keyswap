@@ -7,7 +7,13 @@ import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.NfcEvent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMessageCallback {
     NfcAdapter mNfcAdapter;
@@ -17,7 +23,13 @@ public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMe
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        //setContentView(R.layout.main);
+
+        String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
+                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
+                "Linux", "OS/2" };
+        KeyListAdapter adapter = new KeyListAdapter(this, values);
+        setListAdapter(adapter);
 
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if(mNfcAdapter == null){
@@ -29,10 +41,9 @@ public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMe
         mNfcAdapter.setNdefPushMessageCallback(this,this);
     }
 
-
     @Override
     public NdefMessage createNdefMessage(NfcEvent event){
-        String text =("Beam me up, Android!\n\n"+
+        String text =("This is an encrypted item being sent!\n\n"+
                 "Beam Time: "+System.currentTimeMillis());
 
         NdefMessage msg = new NdefMessage(NdefRecord.createMime("application/vnd.com.example.android.beam", text.getBytes()));
@@ -68,16 +79,13 @@ public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMe
      * Parses the NDEF Message from the intent and prints to the TextView
      */
     void processIntent(Intent intent){
-        /*
-        textView =(TextView) findViewById(R.id.textView);
+
         Parcelable[] rawMsgs = intent.getParcelableArrayExtra(
                 NfcAdapter.EXTRA_NDEF_MESSAGES);
         // only one message sent during the beam
         NdefMessage msg =(NdefMessage) rawMsgs[0];
         // record 0 contains the MIME type, record 1 is the AAR, if present
-        textView.setText(newString(msg.getRecords()[0].getPayload()));
-
-        */
+        Toast.makeText(this, new String(msg.getRecords()[0].getPayload()), Toast.LENGTH_LONG).show();
     }
 
 }
