@@ -24,6 +24,8 @@ import java.util.Map;
 public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMessageCallback {
     NfcAdapter mNfcAdapter;
 
+    ArrayList<Map<String, String>> keys;
+    SimpleAdapter adapter;
 
     /** Called when the activity is first created. */
     @Override
@@ -31,11 +33,12 @@ public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMe
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.main);
 
-        ArrayList<Map<String, String>> list = buildData();
+        buildData();
+
         String[] from = { "full_name", "pgp_fingerprint" };
         int[] to = { R.id.full_name, R.id.pgp_fingerprint };
 
-        SimpleAdapter adapter = new SimpleAdapter(this, list,
+        adapter = new SimpleAdapter(this, keys,
                 R.layout.key_list_item, from, to);
         setListAdapter(adapter);
 
@@ -49,12 +52,11 @@ public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMe
         mNfcAdapter.setNdefPushMessageCallback(this,this);
     }
 
-    private ArrayList<Map<String, String>> buildData() {
-        ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();
-        list.add(putData("Abhi Yerra", "EC92C369", "1"));
-        list.add(putData("Shane Wilton", "02C834B6", "2"));
-        list.add(putData("Derek Halliday", "33D8457A", "3"));
-        return list;
+    private void buildData() {
+        keys = new ArrayList<Map<String, String>>();
+        keys.add(putData("Abhi Yerra", "EC92C369", "1"));
+        keys.add(putData("Shane Wilton", "02C834B6", "2"));
+        keys.add(putData("Derek Halliday", "33D8457A", "3"));
     }
 
     private HashMap<String, String> putData(String name, String pgp_fingerprint, String trust_level) {
@@ -115,13 +117,19 @@ public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMe
      * Parses the NDEF Message from the intent and prints to the TextView
      */
     void processIntent(Intent intent){
+        Parcelable[] rawMsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
 
-        Parcelable[] rawMsgs = intent.getParcelableArrayExtra(
-                NfcAdapter.EXTRA_NDEF_MESSAGES);
         // only one message sent during the beam
         NdefMessage msg =(NdefMessage) rawMsgs[0];
+
         // record 0 contains the MIME type, record 1 is the AAR, if present
-        Toast.makeText(this, new String(msg.getRecords()[0].getPayload()), Toast.LENGTH_LONG).show();
+        String messageReceived = new String(msg.getRecords()[0].getPayload());
+
+        keys.add(putData(messageReceived, "",""));
+
+        adapter.notifyDataSetChanged();
+
+        Toast.makeText(this, messageReceived, Toast.LENGTH_LONG).show();
     }
 
 }
