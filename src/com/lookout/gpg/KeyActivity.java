@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMessageCallback {
     NfcAdapter mNfcAdapter;
@@ -38,8 +40,17 @@ public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMe
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.main);
 
-        buildData();
+        try {
+            GPGBinding gpg = new GPGCli();
+            List<PublicKey> keys = gpg.GetKeys();
+            if(keys.size() > 0) {
+                Log.w("LookoutPG", gpg.GetKeys().get(0).GetKeyId());
+            }
+        } catch(IOException e) {
 
+        }
+
+        ArrayList<Map<String, String>> list = buildData();
         String[] from = { "full_name", "pgp_fingerprint" };
         int[] to = { R.id.full_name, R.id.pgp_fingerprint };
 
