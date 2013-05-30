@@ -26,17 +26,17 @@ public class GPGCli implements GPGBinding {
         return output;
     }
 
-    public ArrayList<PublicKey> GetKeys() {
-        String output = Exec(GPG_PATH, "--list-keys");
+    public ArrayList<GPGKey> GetKeys() {
+        String output = Exec(GPG_PATH, "--with-colons", "--list-keys");
         Log.i("LookoutPG", "Got keys: " + output);
 
-        return new ArrayList<PublicKey>();
+        return new ArrayList<GPGKey>();
     }
 
     private String Exec(String... command) {
         String rawOutput = "";
         try {
-            Process p = new ProcessBuilder(command).redirectErrorStream(true).start();
+            Process p = new ProcessBuilder(command).start();
             p.waitFor();
             rawOutput = getProcessOutput(p);
         } catch(IOException e) {
