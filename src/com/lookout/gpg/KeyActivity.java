@@ -27,6 +27,11 @@ public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMe
     ArrayList<Map<String, String>> keys;
     SimpleAdapter adapter;
 
+    public static String TRUST_DONT_KNOW          = "1";
+    public static String TRUST_I_DO_NOT_TRUST     = "2";
+    public static String TRUST_I_TRUST_MARGINALLY = "3";
+    public static String TRUST_I_TRUST_FULLY      = "4";
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -120,7 +125,7 @@ public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMe
         Parcelable[] rawMsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
 
         // only one message sent during the beam
-        NdefMessage msg =(NdefMessage) rawMsgs[0];
+        NdefMessage msg = (NdefMessage) rawMsgs[0];
 
         // record 0 contains the MIME type, record 1 is the AAR, if present
         String messageReceived = new String(msg.getRecords()[0].getPayload());
