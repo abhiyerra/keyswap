@@ -4,13 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created with IntelliJ IDEA.
- * User: ayerra
- * Date: 5/29/13
- * Time: 10:50 PM
- * To change this template use File | Settings | File Templates.
- */
 public class GPGFactory {
     public static ArrayList<Map<String, String>> keys;
 

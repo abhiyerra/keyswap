@@ -4,7 +4,8 @@ import java.util.List;
 
 public interface GPGBinding {
 
-    List<GPGKey> GetKeys();
+    List<GPGKey> GetPublicKeys();
+    List<GPGKey> GetSecretKeys();
 
     void ExportKey(String destination, String keyId);
     void ImportKey(String source);

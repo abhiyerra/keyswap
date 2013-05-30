@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class GPGCli implements GPGBinding {
 
@@ -14,6 +15,66 @@ public class GPGCli implements GPGBinding {
 
     public GPGCli() {
         Log.i("LookoutPG", "GPGCli initialized");
+    }
+
+    public ArrayList<GPGKey> GetPublicKeys() {
+        String rawList = Exec(GPG_PATH, "--with-colons", "--list-keys");
+        Log.i("LookoutPG", "Got public keys");
+
+        ArrayList<GPGKey> keys = new ArrayList<GPGKey>();
+        Scanner scanner = new Scanner(rawList);
+        while(scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            GPGRecord parentKey = GPGRecord.FromColonListingFactory(line);
+            if(parentKey.getType() == GPGRecord.Type.Public) {
+                GPGKey key = new GPGKey(parentKey);
+                keys.add(key);
+                while(scanner.hasNextLine() && !scanner.hasNext(Pattern.compile("pub:.*"))) {
+                    GPGRecord subRecord = GPGRecord.FromColonListingFactory(scanner.nextLine());
+                    switch(subRecord.getType()) {
+                        case UserId:
+                            key.AddUserId(subRecord);
+                            break;
+                        case Sub:
+                            key.AddSubKey(subRecord);
+                            break;
+                    }
+                }
+            }
+        }
+        scanner.close();
+
+        return keys;
+    }
+
+    public ArrayList<GPGKey> GetSecretKeys() {
+        String rawList = Exec(GPG_PATH, "--with-colons", "--list-secret-keys");
+        Log.i("LookoutPG", "Got secret keys");
+
+        ArrayList<GPGKey> keys = new ArrayList<GPGKey>();
+        Scanner scanner = new Scanner(rawList);
+        while(scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            GPGRecord parentKey = GPGRecord.FromColonListingFactory(line);
+            if(parentKey.getType() == GPGRecord.Type.Secret) {
+                GPGKey key = new GPGKey(parentKey);
+                keys.add(key);
+                while(scanner.hasNextLine() && !scanner.hasNext(Pattern.compile("sec:.*"))) {
+                    GPGRecord subRecord = GPGRecord.FromColonListingFactory(scanner.nextLine());
+                    switch(subRecord.getType()) {
+                        case UserId:
+                            key.AddUserId(subRecord);
+                            break;
+                        case SecretSub:
+                            key.AddSubKey(subRecord);
+                            break;
+                    }
+                }
+            }
+        }
+        scanner.close();
+
+        return keys;
     }
 
     public void ExportKey(String destination, String keyId) {
@@ -39,24 +100,6 @@ public class GPGCli implements GPGBinding {
         Exec(GPG_PATH, "--yes", "--key-server", server, "--send-key", keyId);
 
         Log.i("LookoutPG", keyId + " pushed to " + server);
-    }
-
-    public ArrayList<GPGKey> GetKeys() {
-        String rawList = Exec(GPG_PATH, "--with-colons", "--list-keys");
-        Log.i("LookoutPG", "Got keys: " + rawList);
-
-        ArrayList<GPGKey> keys = new ArrayList<GPGKey>();
-        Scanner scanner = new Scanner(rawList);
-        while(scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            GPGKey key = GPGKey.FromColonListingFactory(line);
-            if(key != null) {
-                keys.add(key);
-            }
-        }
-        scanner.close();
-
-        return keys;
     }
 
     private String Exec(String... command) {
