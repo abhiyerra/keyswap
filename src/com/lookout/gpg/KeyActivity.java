@@ -107,31 +107,27 @@ public class KeyActivity extends Activity implements NfcAdapter.CreateNdefMessag
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "key").commit();
     }
 
-    private void selectItem(int position) {
-        switch(position) {
-            case 0:
-                loadHomeFragment();
-                break;
-            case 3:
-                loadKeyFragment(true);
-                break;
-            case 4:
-                loadKeyFragment(false);
-                break;
-        }
-
-
-        // update selected item and title, then close the drawer
-        lv2.setItemChecked(position, true);
-        //setTitle(mPlanetTitles[position]);
-        mDrawerLayout.closeDrawer(lv2);
-    }
-
     /* The click listner for ListView in the navigation drawer */
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            selectItem(position);
+            switch(position) {
+                case 0:
+                    loadHomeFragment();
+                    break;
+                case 3:
+                    loadKeyFragment(true);
+                    break;
+                case 4:
+                    loadKeyFragment(false);
+                    break;
+            }
+
+
+            // update selected item and title, then close the drawer
+            lv2.setItemChecked(position, true);
+            //setTitle(mPlanetTitles[position]);
+            mDrawerLayout.closeDrawer(lv2);
         }
     }
 
@@ -141,16 +137,6 @@ public class KeyActivity extends Activity implements NfcAdapter.CreateNdefMessag
         String text =("Hi Shane!\n\n"+
                 "Beam Time: "+System.currentTimeMillis());
 
-        /*
-        try {
-            Process p = Runtime.getRuntime().exec("/data/data/info.guardianproject.gpg/app_opt/aliases/gpg --list-keys");
-            BufferedReader bf = new BufferedReader(new InputStreamReader(p.getInputStream()));
-
-            text = bf.readLine();
-        } catch(IOException e) {
-
-        }
-        */
 
         NdefMessage msg = new NdefMessage(NdefRecord.createMime("application/vnd.com.example.android.beam", text.getBytes()));
             /**
@@ -181,9 +167,6 @@ public class KeyActivity extends Activity implements NfcAdapter.CreateNdefMessag
         setIntent(intent);
     }
 
-    /**
-     * Parses the NDEF Message from the intent and prints to the TextView
-     */
     void processIntent(Intent intent){
         Parcelable[] rawMsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
 

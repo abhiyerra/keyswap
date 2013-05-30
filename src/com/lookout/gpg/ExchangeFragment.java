@@ -14,35 +14,24 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-/**
- * Created with IntelliJ IDEA.
- * User: ayerra
- * Date: 5/29/13
- * Time: 10:25 PM
- * To change this template use File | Settings | File Templates.
- */
-public class KeyFragment extends Fragment {
+public class ExchangeFragment extends Fragment {
     SimpleAdapter adapter;
-
-    public KeyFragment() {
-        // Empty constructor required for fragment subclasses
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_key, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_exchange, container, false);
 
         GPGFactory.buildData();
 
-        ListView lv = (ListView) rootView.findViewById(R.id.keyView);
+        ListView lv = (ListView) rootView.findViewById(R.id.keyToShare);
         String[] from = { "full_name", "pgp_fingerprint" };
         int[] to = { R.id.full_name, R.id.short_id };
         adapter = new SimpleAdapter(rootView.getContext(), GPGFactory.getKeys(), R.layout.key_list_item, from, to);
         lv.setAdapter(adapter);
 
-        getActivity().setTitle("Public Keys");
+        getActivity().setTitle("Key Exchange");
         return rootView;
     }
 }
