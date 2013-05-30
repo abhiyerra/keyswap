@@ -45,8 +45,6 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        KeyringSyncManager.getInstance().sync(this.getApplicationContext());
-
         setContentView(R.layout.main);
 
         fragmentManager = getFragmentManager();
@@ -54,7 +52,6 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         setupSidebar();
-
 
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if(mNfcAdapter == null){
@@ -64,7 +61,7 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
             mNfcAdapter.setNdefPushMessageCallback(this, this);
         }
 
-        loadKeyFragment(true);
+        new KeyringSyncTask().execute();
     }
 
 
