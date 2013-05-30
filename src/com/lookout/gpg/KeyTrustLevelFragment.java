@@ -20,7 +20,7 @@ public class KeyTrustLevelFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_key_trust_level, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_key_trust_level, container, false);
 
         Button signButton = (Button)rootView.findViewById(R.id.sign_key_button);
 
@@ -51,6 +51,8 @@ public class KeyTrustLevelFragment extends Fragment {
                 }
 
                 GPGFactory.signReceivedKey(sign_trust);
+
+
             }
         });
 

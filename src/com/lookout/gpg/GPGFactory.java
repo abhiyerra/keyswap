@@ -44,4 +44,11 @@ public class GPGFactory {
     public static void signReceivedKey(String trustLevel) {
 
     }
+
+    public static String getPublicKey() {
+        return "This is a public key";
+    }
+    public static String getSignedKey() {
+        return "This is a signed key";
+    }
 }

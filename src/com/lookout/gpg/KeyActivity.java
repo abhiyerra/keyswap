@@ -153,12 +153,10 @@ public class KeyActivity extends Activity  implements NfcAdapter.CreateNdefMessa
 
     @Override
     public NdefMessage createNdefMessage(NfcEvent event){
+        NdefMessage msg = new NdefMessage(
+                NdefRecord.createMime("application/vnd.com.example.android.beam", GPGFactory.getPublicKey().getBytes()),
+                NdefRecord.createMime("application/vnd.com.example.android.beam", GPGFactory.getSignedKey().getBytes()));
 
-        String text =("Hi Shane!\n\n"+
-                "Beam Time: "+System.currentTimeMillis());
-
-
-        NdefMessage msg = new NdefMessage(NdefRecord.createMime("application/vnd.com.example.android.beam", text.getBytes()));
         /**
          * The Android Application Record (AAR) is commented out. When a device
          * receives a push with an AAR in it, the application specified in the AAR
@@ -192,10 +190,11 @@ public class KeyActivity extends Activity  implements NfcAdapter.CreateNdefMessa
 
         // record 0 contains the MIME type, record 1 is the AAR, if present
         String messageReceived = new String(msg.getRecords()[0].getPayload());
+        String messageReceived2 = new String(msg.getRecords()[1].getPayload());
 
         GPGFactory.setReceivedKey(messageReceived);
 
-        Toast.makeText(this.getApplicationContext(), messageReceived, Toast.LENGTH_LONG).show();
+        Toast.makeText(this.getApplicationContext(), messageReceived2, Toast.LENGTH_LONG).show();
 
         loadKeyVerifyFragment(messageReceived);
     }
