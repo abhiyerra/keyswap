@@ -1,34 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/public_key_layout"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="vertical">
-
 
     <TextView
             android:id="@+id/full_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@+id/label"
-            android:textSize="16pt" android:layout_gravity="left|center_vertical" android:layout_row="0"
-            android:layout_column="0"/>
+            android:text="@+id/full_name"
+            android:layout_gravity="left|center_vertical" android:layout_row="0"
+            android:layout_column="0"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            style="@android:style/TextAppearance.Medium"/>/>
 
-    <GridLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+    <TextView
+            android:id="@+id/created"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@+id/created"
+            android:layout_toRightOf="@+id/full_name"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentRight="true"
+            style="@android:style/TextAppearance.Holo.Small" android:gravity="right"/>
 
-        <TextView
-                android:id="@+id/pgp_fingerprint"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@+id/label"
-                android:textSize="12pt" android:layout_gravity="center"/>
-        <ImageView
-                android:id="@+id/trust_level"
-                android:layout_width="60px"
-                android:layout_height="60px"
-                android:src="@drawable/padlock" android:layout_gravity="right|center_vertical"/>
-    </GridLayout>
+    <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@+id/email"
+            android:layout_below="@+id/full_name"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:paddingBottom="10dp"
+            style="@android:style/TextAppearance.Holo.Small"/>
 
+    <TextView
+            android:id="@+id/short_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@+id/short_id"
+            android:layout_below="@+id/full_name"
+            android:layout_toRightOf="@+id/email"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentRight="true"
+            style="@android:style/TextAppearance.Holo.Small" android:gravity="right"/>
 
-</LinearLayout>
+</RelativeLayout>
