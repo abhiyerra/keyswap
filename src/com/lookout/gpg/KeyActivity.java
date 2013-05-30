@@ -8,10 +8,7 @@ import android.nfc.NfcAdapter;
 import android.nfc.NfcEvent;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -64,9 +61,14 @@ public class KeyActivity extends SlidingActivity implements NfcAdapter.CreateNde
         lv.setAdapter(adapter);
 
 
+
+
+
+
+
+
+
         setBehindContentView(R.layout.menu);
-
-
         SlidingMenu menu = getSlidingMenu();
         menu.setMode(SlidingMenu.LEFT);
         menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
@@ -74,10 +76,21 @@ public class KeyActivity extends SlidingActivity implements NfcAdapter.CreateNde
         menu.setShadowDrawable(R.drawable.shadow);
         menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
         menu.setFadeDegree(0.35f);
-        // menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
         setSlidingActionBarEnabled(true);
-        //menu.setMenu(R.layout.menu);
 
+
+        ListView lv2 = (ListView) findViewById(R.id.main_menu_list);
+        String[] values = new String[] {
+                "Home",
+                "Exchange Keys",
+                "Sync Keyring",
+                "Public Keys",
+                "Private Keys"
+        };
+
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getApplicationContext(),
+                android.R.layout.simple_list_item_1, values);
+        lv2.setAdapter(adapter2);
 
 
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
