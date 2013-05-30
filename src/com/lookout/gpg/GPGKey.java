@@ -14,11 +14,11 @@ public class GPGKey {
         this.subKeys = new ArrayList<GPGRecord>();
     }
 
-    public String GetKeyId() {
+    public String getKeyId() {
         return parentKey.getKeyId();
     }
 
-    public GPGRecord GetPrimaryUserId() {
+    public GPGRecord getPrimaryKeyId() {
         if(userIds.isEmpty()) {
             return null;
         }
@@ -26,23 +26,27 @@ public class GPGKey {
         return userIds.get(0);
     }
 
-    public void AddUserId(GPGRecord userId) {
+    public void addUserId(GPGRecord userId) {
         userIds.add(userId);
     }
 
-    public void AddSubKey(GPGRecord subKey) {
+    public void addSubKey(GPGRecord subKey) {
         subKeys.add(subKey);
     }
 
-    public GPGRecord.Type GetType() {
+    public GPGRecord.Type getType() {
         return parentKey.getType();
     }
 
-    public ArrayList<GPGRecord> GetUserIds() {
+    public GPGRecord getParentKey() {
+        return parentKey;
+    }
+
+    public ArrayList<GPGRecord> getUserIds() {
         return userIds;
     }
 
-    public ArrayList<GPGRecord> GetSubKeys() {
+    public ArrayList<GPGRecord> getSubKeys() {
         return subKeys;
     }
 }

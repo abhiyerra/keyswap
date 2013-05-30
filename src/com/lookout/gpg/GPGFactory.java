@@ -15,9 +15,10 @@ public class GPGFactory {
 
     public static void buildData() {
         keys = new ArrayList<Map<String, String>>();
-        keys.add(putData("Abhi Yerra", "EC92C369", "1"));
-        keys.add(putData("Shane Wilton", "02C834B6", "2"));
-        keys.add(putData("Derek Halliday", "33D8457A", "3"));
+        ArrayList<GPGKey> publicKeys = GPGCli.GetInstance().GetPublicKeys();
+        for(GPGKey key : publicKeys) {
+            keys.add(putData(key.getPrimaryKeyId().getUserId(), key.getKeyId(), key.getParentKey().getOwnerTrust().toString()));
+        }
     }
 
     public static HashMap<String, String> putData(String name, String pgp_fingerprint, String trust_level) {

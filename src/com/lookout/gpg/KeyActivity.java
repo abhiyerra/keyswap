@@ -46,10 +46,6 @@ public class KeyActivity extends Activity  implements NfcAdapter.CreateNdefMessa
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        GPGBinding gpg = new GPGCli();
-        gpg.ImportKey("/sdcard/key.asc");
-        List<GPGKey> keys = gpg.GetPublicKeys();
-
         setupSidebar();
 
 

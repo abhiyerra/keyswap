@@ -21,7 +21,7 @@ public class GPGRecord {
         SignatureSubpacket
     }
 
-    public enum Validity {
+    public enum TrustLevel {
         New,
         Invalid,
         Disabled,
@@ -30,9 +30,9 @@ public class GPGRecord {
         Unknown,
         Undefined,
         Valid,
-        Marginally,
-        Fully,
-        Ultimately
+        Marginal,
+        Full,
+        Ultimate
     }
 
     public enum Algorithm {
@@ -50,14 +50,14 @@ public class GPGRecord {
     }
 
     private Type type;
-    private Validity validity;
+    private TrustLevel validity;
     private Algorithm algorithm;
-    private int length;
+    private String length;
     private String keyId;
     private String creationDate;
     private String expirationDate;
     private String localId;
-    private String ownerTrust;
+    private TrustLevel ownerTrust;
     private String userId;
 
     public GPGRecord() {
@@ -107,45 +107,10 @@ public class GPGRecord {
             key.type = Type.SignatureSubpacket;
         }
 
-        //Only the first character of this field determines validity
         char validity = fields[1].charAt(0);
-        switch(validity) {
-            case 'o':
-                key.validity = Validity.New;
-                break;
-            case 'i':
-                key.validity = Validity.Invalid;
-                break;
-            case 'd':
-                key.validity = Validity.Disabled;
-                break;
-            case 'r':
-                key.validity = Validity.Revoked;
-                break;
-            case 'e':
-                key.validity = Validity.Expired;
-                break;
-            case '-':
-                key.validity = Validity.Unknown;
-                break;
-            case 'q':
-                key.validity = Validity.Undefined;
-                break;
-            case 'm':
-                key.validity = Validity.Marginally;
-                break;
-            case 'f':
-                key.validity = Validity.Fully;
-                break;
-            case 'u':
-                key.validity = Validity.Ultimately;
-                break;
-        }
+        key.validity = ParseTrustLevel(validity);
 
-        try {
-            key.length = Integer.parseInt(fields[2]);
-        } catch(NumberFormatException e) {
-        }
+        key.length = fields[2];
 
         try {
             int algorithm = Integer.parseInt(fields[3]);
@@ -170,7 +135,9 @@ public class GPGRecord {
         key.creationDate   = fields[5];
         key.expirationDate = fields[6];
         key.localId        = fields[7];
-        key.ownerTrust     = fields[8];
+        if(fields[8].length() > 0) {
+            key.ownerTrust     = ParseTrustLevel(fields[8].charAt(0));
+        }
         key.userId         = fields[9];
 
         return key;
@@ -180,7 +147,7 @@ public class GPGRecord {
         return type;
     }
 
-    public Validity getValidity() {
+    public TrustLevel getValidity() {
         return validity;
     }
 
@@ -188,7 +155,7 @@ public class GPGRecord {
         return algorithm;
     }
 
-    public int getLength() {
+    public String getLength() {
         return length;
     }
 
@@ -208,11 +175,37 @@ public class GPGRecord {
         return localId;
     }
 
-    public String getOwnerTrust() {
+    public TrustLevel getOwnerTrust() {
         return ownerTrust;
     }
 
     public String getUserId() {
         return userId;
+    }
+
+    private static TrustLevel ParseTrustLevel(char trust) {
+        switch(trust) {
+            case 'o':
+                return TrustLevel.New;
+            case 'i':
+                return TrustLevel.Invalid;
+            case 'd':
+                return TrustLevel.Disabled;
+            case 'r':
+                return TrustLevel.Revoked;
+            case 'e':
+                return TrustLevel.Expired;
+            case 'q':
+                return TrustLevel.Undefined;
+            case 'm':
+                return TrustLevel.Marginal;
+            case 'f':
+                return TrustLevel.Full;
+            case 'u':
+                return TrustLevel.Ultimate;
+            case '-':
+            default:
+                return TrustLevel.Unknown;
+        }
     }
 }

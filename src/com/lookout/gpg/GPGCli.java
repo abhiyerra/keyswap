@@ -11,9 +11,18 @@ import java.util.regex.Pattern;
 
 public class GPGCli implements GPGBinding {
 
+    private static GPGCli instance;
+
     private final String GPG_PATH = "/data/data/info.guardianproject.gpg/app_opt/aliases/gpg2";
 
-    public GPGCli() {
+    public static GPGCli GetInstance() {
+        if(instance == null) {
+            instance = new GPGCli();
+        }
+        return instance;
+    }
+
+    private GPGCli() {
         Log.i("LookoutPG", "GPGCli initialized");
     }
 
@@ -33,10 +42,10 @@ public class GPGCli implements GPGBinding {
                     GPGRecord subRecord = GPGRecord.FromColonListingFactory(scanner.nextLine());
                     switch(subRecord.getType()) {
                         case UserId:
-                            key.AddUserId(subRecord);
+                            key.addUserId(subRecord);
                             break;
                         case Sub:
-                            key.AddSubKey(subRecord);
+                            key.addSubKey(subRecord);
                             break;
                     }
                 }
@@ -63,10 +72,10 @@ public class GPGCli implements GPGBinding {
                     GPGRecord subRecord = GPGRecord.FromColonListingFactory(scanner.nextLine());
                     switch(subRecord.getType()) {
                         case UserId:
-                            key.AddUserId(subRecord);
+                            key.addUserId(subRecord);
                             break;
                         case SecretSub:
-                            key.AddSubKey(subRecord);
+                            key.addSubKey(subRecord);
                             break;
                     }
                 }
