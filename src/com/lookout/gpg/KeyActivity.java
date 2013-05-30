@@ -19,7 +19,9 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class KeyActivity extends Activity {
+public class KeyActivity extends Activity  implements NfcAdapter.CreateNdefMessageCallback {
+
+    NfcAdapter mNfcAdapter;
 
     ListView lv2;
 
@@ -50,7 +52,16 @@ public class KeyActivity extends Activity {
 
         setupSidebar();
 
-        loadKeyFragment(true);
+
+        mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        if(mNfcAdapter == null){
+            Toast.makeText(this, "NFC is not available", Toast.LENGTH_LONG).show();
+        } else {
+            // Register callback
+            mNfcAdapter.setNdefPushMessageCallback(this, this);
+        }
+
+        //loadKeyFragment(true);
     }
 
 
@@ -100,6 +111,17 @@ public class KeyActivity extends Activity {
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "key").commit();
     }
 
+
+    private void loadKeyVerifyFragment(String receivedKey) {
+        Fragment fragment = new KeyVerifyFragment();
+        Bundle args = new Bundle();
+        args.putString("ReceivedKey", receivedKey);
+        fragment.setArguments(args);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "key").commit();
+    }
+
     /* The click listner for ListView in the navigation drawer */
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
@@ -127,6 +149,12 @@ public class KeyActivity extends Activity {
         }
     }
 
+
+
+
+
+
+
     @Override
     public NdefMessage createNdefMessage(NfcEvent event){
 
@@ -152,8 +180,27 @@ public class KeyActivity extends Activity {
     public void onResume(){
         super.onResume();
         // Check to see that the Activity started due to an Android Beam
-        if(NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())){
-            processIntent(getIntent());
+
+        if(NfcAdapter.ACTION_NDEF_DISCOVERED.equals(this.getIntent().getAction())){
+            processIntent(this.getIntent());
         }
+    }
+
+
+
+    void processIntent(Intent intent){
+        Parcelable[] rawMsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+
+        // only one message sent during the beam
+        NdefMessage msg = (NdefMessage) rawMsgs[0];
+
+        // record 0 contains the MIME type, record 1 is the AAR, if present
+        String messageReceived = new String(msg.getRecords()[0].getPayload());
+
+        GPGFactory.addKey(messageReceived);
+
+        Toast.makeText(this.getApplicationContext(), messageReceived, Toast.LENGTH_LONG).show();
+
+        loadKeyVerifyFragment(messageReceived);
     }
 }
