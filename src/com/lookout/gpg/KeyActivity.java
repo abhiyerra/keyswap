@@ -53,7 +53,7 @@ public class KeyActivity extends Activity implements NfcAdapter.CreateNdefMessag
 
         GPGBinding gpg = new GPGCli();
         gpg.ImportKey("/sdcard/key.asc");
-        gpg.GetKeys();
+        List<GPGKey> keys = gpg.GetKeys();
 
         setupSidebar();
 

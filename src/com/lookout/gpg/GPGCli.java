@@ -4,6 +4,7 @@ import android.util.Log;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class GPGCli implements GPGBinding {
 
@@ -27,10 +28,21 @@ public class GPGCli implements GPGBinding {
     }
 
     public ArrayList<GPGKey> GetKeys() {
-        String output = Exec(GPG_PATH, "--with-colons", "--list-keys");
-        Log.i("LookoutPG", "Got keys: " + output);
+        String rawList = Exec(GPG_PATH, "--with-colons", "--list-keys");
+        Log.i("LookoutPG", "Got keys: " + rawList);
 
-        return new ArrayList<GPGKey>();
+        ArrayList<GPGKey> keys = new ArrayList<GPGKey>();
+        Scanner scanner = new Scanner(rawList);
+        while(scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            GPGKey key = GPGKey.FromColonListingFactory(line);
+            if(key != null) {
+                keys.add(key);
+            }
+        }
+        scanner.close();
+
+        return keys;
     }
 
     private String Exec(String... command) {
