@@ -50,7 +50,23 @@ public class KeyActivity extends SlidingActivity implements NfcAdapter.CreateNde
 
         }
 
+        setupKeyListFragment();
+        setupSidebar();
+
+        mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        if(mNfcAdapter == null){
+            Toast.makeText(this, "NFC is not available", Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
+        // Register callback
+        mNfcAdapter.setNdefPushMessageCallback(this,this);
+    }
+
+    private void setupKeyListFragment() {
+
         buildData();
+
 
         ListView lv = (ListView) findViewById(R.id.keyView);
         String[] from = { "full_name", "pgp_fingerprint" };
@@ -59,15 +75,9 @@ public class KeyActivity extends SlidingActivity implements NfcAdapter.CreateNde
         adapter = new SimpleAdapter(this, keys,
                 R.layout.key_list_item, from, to);
         lv.setAdapter(adapter);
+    }
 
-
-
-
-
-
-
-
-
+    private void setupSidebar() {
         setBehindContentView(R.layout.menu);
         SlidingMenu menu = getSlidingMenu();
         menu.setMode(SlidingMenu.LEFT);
@@ -77,7 +87,6 @@ public class KeyActivity extends SlidingActivity implements NfcAdapter.CreateNde
         menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
         menu.setFadeDegree(0.35f);
         setSlidingActionBarEnabled(true);
-
 
         ListView lv2 = (ListView) findViewById(R.id.main_menu_list);
         String[] values = new String[] {
@@ -91,16 +100,6 @@ public class KeyActivity extends SlidingActivity implements NfcAdapter.CreateNde
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getApplicationContext(),
                 android.R.layout.simple_list_item_1, values);
         lv2.setAdapter(adapter2);
-
-
-        mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        if(mNfcAdapter == null){
-            Toast.makeText(this, "NFC is not available", Toast.LENGTH_LONG).show();
-            finish();
-            return;
-        }
-        // Register callback
-        mNfcAdapter.setNdefPushMessageCallback(this,this);
     }
 
     private void buildData() {
