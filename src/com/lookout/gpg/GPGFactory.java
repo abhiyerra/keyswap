@@ -14,6 +14,8 @@ import java.util.Map;
 public class GPGFactory {
     public static ArrayList<Map<String, String>> keys;
 
+    public static String receivedKey;
+
     public static ArrayList<Map<String, String>> getKeys() {
         return keys;
     }
@@ -33,7 +35,19 @@ public class GPGFactory {
         return item;
     }
 
-    public static void addKey(String key) {
-        keys.add(putData(key, "",""));
+    public static void setReceivedKey(String key) {
+        receivedKey = key;
+    }
+
+    public static String getReceivedKey() {
+        if(receivedKey == null) {
+            return "";
+        }
+
+        return receivedKey;
+    }
+
+    public static void signReceivedKey(String trustLevel) {
+
     }
 }

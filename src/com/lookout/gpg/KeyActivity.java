@@ -61,7 +61,7 @@ public class KeyActivity extends Activity  implements NfcAdapter.CreateNdefMessa
             mNfcAdapter.setNdefPushMessageCallback(this, this);
         }
 
-        //loadKeyFragment(true);
+        loadKeyFragment(true);
     }
 
 
@@ -119,7 +119,7 @@ public class KeyActivity extends Activity  implements NfcAdapter.CreateNdefMessa
         fragment.setArguments(args);
 
         FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "key").commit();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "key_verify").commit();
     }
 
     /* The click listner for ListView in the navigation drawer */
@@ -197,7 +197,7 @@ public class KeyActivity extends Activity  implements NfcAdapter.CreateNdefMessa
         // record 0 contains the MIME type, record 1 is the AAR, if present
         String messageReceived = new String(msg.getRecords()[0].getPayload());
 
-        GPGFactory.addKey(messageReceived);
+        GPGFactory.setReceivedKey(messageReceived);
 
         Toast.makeText(this.getApplicationContext(), messageReceived, Toast.LENGTH_LONG).show();
 
