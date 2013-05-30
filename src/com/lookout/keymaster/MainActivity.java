@@ -163,15 +163,16 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
             return null;
         }
 
+        // Have a UI handler to show progress of the import
         /*
         protected void onProgressUpdate(Integer... progress) {
             setProgressPercent(progress[0]);
         }
-
-        protected void onPostExecute(Long result) {
-            showDialog("Downloaded " + result + " bytes");
+*/
+        protected void onPostExecute(Void result) {
+            loadKeyFragment(true);
         }
-        */
+
     }
 
 
