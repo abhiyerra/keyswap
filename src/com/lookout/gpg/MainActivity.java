@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class KeyActivity extends Activity  implements NfcAdapter.CreateNdefMessageCallback {
+public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMessageCallback {
 
     NfcAdapter mNfcAdapter;
 
@@ -29,7 +29,6 @@ public class KeyActivity extends Activity  implements NfcAdapter.CreateNdefMessa
     FragmentManager fragmentManager;
 
     private DrawerLayout mDrawerLayout;
-
 
     public static String TRUST_DONT_KNOW          = "1";
     public static String TRUST_I_DO_NOT_TRUST     = "2";

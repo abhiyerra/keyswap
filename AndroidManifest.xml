@@ -17,7 +17,7 @@
             <action android:name="android.intent.action.MEDIA_MOUNTED" />
             <data android:scheme="file" />
         </intent-filter>
-        <activity android:name="KeyActivity"
+        <activity android:name=".MainActivity"
                   android:theme="@style/AppTheme"
                   android:label="@string/app_name">
             <intent-filter>
