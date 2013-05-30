@@ -1,4 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">LookoutPG</string>
+    <string name="app_name">Keymaster</string>
+    <string name="exchange">Key Exchange</string>
+    <string name="exchange_select_prompt">Select a public key to exchange.</string>
+    <string name="exchange_select_default">Use by default for future key exchanges.</string>
+    <string name="exchange_select_none">No Public Key Selected</string>
+    <string name="exchange_sync_prompt">Ready to exchange.</string>
+    <string name="exchange_sync_none">No device detected.</string>
+    <string name="exchange_verify_prompt">Ready to verify!</string>
+    <string name="exchange_verify_you">Your key:</string>
+    <string name="exchange_verify_them">Their key:</string>
+    <string name="exchange_verify_pass">Secret passphrase:</string>
+    <string name="exchange_verify_finger">Fingerprint:</string>
+    <string name="exchange_trust_prompt">How much do you trust them?</string>
+    <string name="exchange_trust_unknown">unknown</string>
+    <string name="exchange_trust_unknown_desc">You just met them and have no idea how serious they are about this stuff.</string>
+    <string name="exchange_trust_none">none</string>
+    <string name="exchange_trust_none_desc">You do NOT trust them - only about as far as you could throw them.</string>
+    <string name="exchange_trust_marginal">marginal</string>
+    <string name="exchange_trust_marginal_desc">They have a pretty good understanding of key signing and validate beforehand.</string>
+    <string name="exchange_trust_full">full</string>
+    <string name="exchange_trust_full_desc">You trust their signature as good as your own.</string>
+    <string name="exchange_return_prompt">Send the signed key back to them.</string>
+    <string name="exchange_keyserver_prompt">Push to keyserver?</string>
+    <string name="exchange_keyserver_warning">Remember, not everyone prefers to have their public key listed on keyservers - so don\'t perform this step without explicit permission from your new contact.</string>
+
 </resources>
