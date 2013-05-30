@@ -11,6 +11,62 @@
             android:text="How much do you trust them?"
             android:layout_gravity="left"/>
 
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+        <RadioButton
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="unknown"
+                android:checked="true"
+                android:id="@+id/unknown_trust_level"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="You just met them and have no idea how serious they are about this stuff."
+                android:layout_gravity="left"/>
+
+        <RadioButton
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="none"
+                android:id="@+id/none_trust_level"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="You do NOT trust them - only about as far as you could throw them."
+                android:layout_gravity="left"/>
+
+        <RadioButton
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="marginal"
+                android:id="@+id/marginal_trust_level"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="They have a pretty good understanding of key signing and validate before signing."
+                android:layout_gravity="left"/>
+
+        <RadioButton
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="full"
+                android:id="@+id/full_trust_level"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="You trust their signature on a key as good as your own."
+                android:layout_gravity="left"/>
+    </RadioGroup>
+
+
+
     <Button
             android:id="@+id/sign_key_button"
             android:layout_height="wrap_content"
