@@ -52,7 +52,10 @@ public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMe
 
         }
 
+
+
         SlidingMenu menu = new SlidingMenu(this);
+        /*
         menu.setMode(SlidingMenu.LEFT);
         menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         menu.setShadowWidthRes(R.dimen.shadow_width);
@@ -61,10 +64,10 @@ public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMe
         menu.setFadeDegree(0.35f);
         menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
         //menu.setMenu(R.layout.menu);
+        */
 
         buildData();
 
-        ArrayList<Map<String, String>> list = buildData();
         String[] from = { "full_name", "pgp_fingerprint" };
         int[] to = { R.id.full_name, R.id.pgp_fingerprint };
 
