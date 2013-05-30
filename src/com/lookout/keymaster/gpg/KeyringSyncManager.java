@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class KeyringSyncManager {
 
     private static KeyringSyncManager instance;
-    private static final String KEY_STORE_DIRECTORY = "/sdcard/LookoutPG/keyring/";
+    private static final String KEY_STORE_DIRECTORY = "/sdcard/LookoutPG/";
 
     private String storagePath;
 
@@ -39,15 +39,13 @@ public class KeyringSyncManager {
     }
 
     public void exportPublicKeyring() {
-        ArrayList<GPGKey> publicKeys = GPGCli.getInstance().getPublicKeys();
-        for(GPGKey key : publicKeys) {
-            GPGCli.getInstance().exportKey(this.storagePath, key.getKeyId());
-        }
+        GPGCli.getInstance().exportKeyring(new File(storagePath, "/Keyring.gpg").getAbsolutePath());
     }
 
     public void importPublicKeyring() {
         for(File file : new File(storagePath).listFiles()) {
             GPGCli.getInstance().importKey(file.getAbsolutePath());
+            file.delete();
         }
     }
 }

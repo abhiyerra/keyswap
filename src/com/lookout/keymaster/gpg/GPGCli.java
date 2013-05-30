@@ -95,6 +95,12 @@ public class GPGCli implements GPGBinding {
         return keys;
     }
 
+    public void exportKeyring(String destination) {
+        Exec(GPG_PATH, "--yes", "--output", destination, "--export");
+
+        Log.i("LookoutPG", "Keyring exported");
+    }
+
     public void exportKey(String destination, String keyId) {
         String outputPath = new File(destination, keyId + ".gpg").getAbsolutePath();
         Exec(GPG_PATH, "--yes", "--output", outputPath, "--export", keyId);

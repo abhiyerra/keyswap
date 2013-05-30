@@ -7,6 +7,7 @@ public interface GPGBinding {
     List<GPGKey> getPublicKeys();
     List<GPGKey> getSecretKeys();
 
+    void exportKeyring(String destination);
     void exportKey(String destination, String keyId);
     void importKey(String source);
 
