@@ -1,4 +1,4 @@
-package com.lookout.gpg;
+package com.lookout.keymaster;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import com.lookout.keymaster.R;
 
 import java.util.List;
 

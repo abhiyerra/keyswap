@@ -1,51 +1,40 @@
-package com.lookout.gpg;
+package com.lookout.keymaster;
 
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import com.lookout.keymaster.R;
 
 /**
  * Created with IntelliJ IDEA.
  * User: ayerra
  * Date: 5/29/13
- * Time: 10:25 PM
+ * Time: 11:02 PM
  * To change this template use File | Settings | File Templates.
  */
-public class KeyFragment extends Fragment {
-    SimpleAdapter adapter;
 
-    public KeyFragment() {
-        // Empty constructor required for fragment subclasses
-    }
+public class HomeFragment extends Fragment {
+    SimpleAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_key, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
+        /*
         GPGFactory.buildData();
 
         ListView lv = (ListView) rootView.findViewById(R.id.keyView);
         String[] from = { "full_name", "key_id" };
-        int[] to = { R.id.full_name, R.id.short_id };
+        int[] to = { R.id.full_name, R.id.key_id };
         adapter = new SimpleAdapter(rootView.getContext(), GPGFactory.getKeys(), R.layout.key_list_item, from, to);
-        lv.setAdapter(adapter);
+        lv.setAdapter(adapter);           */
 
-        getActivity().setTitle("Public Keys");
+        getActivity().setTitle("Home");
         return rootView;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        if(adapter != null) {
-            adapter.notifyDataSetChanged();
-        }
     }
 }

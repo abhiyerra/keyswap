@@ -1,4 +1,4 @@
-package com.lookout.gpg;
+package com.lookout.keymaster;
 
 import android.app.Application;
 import android.content.Context;

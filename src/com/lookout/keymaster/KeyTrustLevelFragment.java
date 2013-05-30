@@ -1,4 +1,4 @@
-package com.lookout.gpg;
+package com.lookout.keymaster;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import com.lookout.keymaster.R;
 
 public class KeyTrustLevelFragment extends Fragment {
     public KeyTrustLevelFragment() {
