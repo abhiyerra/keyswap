@@ -44,8 +44,6 @@ public class KeyActivity extends SlidingActivity implements NfcAdapter.CreateNde
         gpg.ImportKey("/sdcard/key.asc");
         gpg.GetKeys();
 
-        }
-
         buildData();
 
         ListView lv = (ListView) findViewById(R.id.keyView);
