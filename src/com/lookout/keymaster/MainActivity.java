@@ -8,6 +8,7 @@ import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.NfcEvent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.widget.DrawerLayout;
@@ -135,6 +136,9 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
                 case 1:
                     loadExchangeFragment();
                     break;
+                case 2:
+                    new KeyringSyncTask().execute();
+                    break;
                 case 3:
                     loadKeyFragment(true);
                     break;
@@ -152,6 +156,23 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
     }
 
 
+    private class KeyringSyncTask extends AsyncTask<Void, Void, Void> {
+        protected Void doInBackground(Void... voids) {
+            KeyringSyncManager.getInstance().sync(getApplicationContext());
+
+            return null;
+        }
+
+        /*
+        protected void onProgressUpdate(Integer... progress) {
+            setProgressPercent(progress[0]);
+        }
+
+        protected void onPostExecute(Long result) {
+            showDialog("Downloaded " + result + " bytes");
+        }
+        */
+    }
 
 
 
