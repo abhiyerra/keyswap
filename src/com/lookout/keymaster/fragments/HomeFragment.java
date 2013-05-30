@@ -1,4 +1,4 @@
-package com.lookout.keymaster;
+package com.lookout.keymaster.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;

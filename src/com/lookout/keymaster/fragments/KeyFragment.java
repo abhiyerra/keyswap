@@ -1,55 +1,53 @@
-package com.lookout.keymaster;
+package com.lookout.keymaster.fragments;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.content.Intent;
-import android.nfc.NdefMessage;
-import android.nfc.NdefRecord;
-import android.nfc.NfcAdapter;
-import android.nfc.NfcEvent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
+import com.lookout.keymaster.gpg.GPGFactory;
 import com.lookout.keymaster.R;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-
-public class ExchangeFragment extends Fragment {
-
+/**
+ * Created with IntelliJ IDEA.
+ * User: ayerra
+ * Date: 5/29/13
+ * Time: 10:25 PM
+ * To change this template use File | Settings | File Templates.
+ */
+public class KeyFragment extends Fragment {
     SimpleAdapter adapter;
 
-
-    public ExchangeFragment() {
-
+    public KeyFragment() {
+        // Empty constructor required for fragment subclasses
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_exchange, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_key, container, false);
 
         GPGFactory.buildData();
 
-        ListView lv = (ListView) rootView.findViewById(R.id.keyToShare);
+        ListView lv = (ListView) rootView.findViewById(R.id.keyView);
         String[] from = { "full_name", "key_id" };
         int[] to = { R.id.full_name, R.id.short_id };
         adapter = new SimpleAdapter(rootView.getContext(), GPGFactory.getKeys(), R.layout.key_list_item, from, to);
         lv.setAdapter(adapter);
 
-        getActivity().setTitle("Key Exchange");
-
+        getActivity().setTitle("Public Keys");
         return rootView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
 
-
+        if(adapter != null) {
+            adapter.notifyDataSetChanged();
+        }
+    }
 }

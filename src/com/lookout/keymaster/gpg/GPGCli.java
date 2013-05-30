@@ -1,8 +1,5 @@
-package com.lookout.keymaster;
+package com.lookout.keymaster.gpg;
 
-import android.app.Application;
-import android.content.Context;
-import android.media.MediaScannerConnection;
 import android.util.Log;
 
 import java.io.BufferedReader;

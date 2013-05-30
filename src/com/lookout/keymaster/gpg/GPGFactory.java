@@ -1,4 +1,4 @@
-package com.lookout.keymaster;
+package com.lookout.keymaster.gpg;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.lookout.keymaster;
+package com.lookout.keymaster.gpg;
 
 public class GPGRecord {
 

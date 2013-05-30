@@ -1,4 +1,4 @@
-package com.lookout.keymaster;
+package com.lookout.keymaster.fragments;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import com.lookout.keymaster.gpg.GPGFactory;
 import com.lookout.keymaster.R;
 
 public class KeyVerifyFragment extends Fragment {
