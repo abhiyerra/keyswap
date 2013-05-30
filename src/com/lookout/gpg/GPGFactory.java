@@ -21,10 +21,10 @@ public class GPGFactory {
         }
     }
 
-    public static HashMap<String, String> putData(String name, String pgp_fingerprint, String trust_level) {
+    public static HashMap<String, String> putData(String name, String key_id, String trust_level) {
         HashMap<String, String> item = new HashMap<String, String>();
         item.put("full_name", name);
-        item.put("pgp_fingerprint", pgp_fingerprint);
+        item.put("key_id", key_id);
         item.put("trust_level", trust_level);
         return item;
     }

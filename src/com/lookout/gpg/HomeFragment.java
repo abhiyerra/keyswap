@@ -28,8 +28,8 @@ public class HomeFragment extends Fragment {
         GPGFactory.buildData();
 
         ListView lv = (ListView) rootView.findViewById(R.id.keyView);
-        String[] from = { "full_name", "pgp_fingerprint" };
-        int[] to = { R.id.full_name, R.id.pgp_fingerprint };
+        String[] from = { "full_name", "key_id" };
+        int[] to = { R.id.full_name, R.id.key_id };
         adapter = new SimpleAdapter(rootView.getContext(), GPGFactory.getKeys(), R.layout.key_list_item, from, to);
         lv.setAdapter(adapter);           */
 
