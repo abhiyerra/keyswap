@@ -45,4 +45,13 @@ public class KeyFragment extends Fragment {
         getActivity().setTitle("Public Keys");
         return rootView;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if(adapter != null) {
+            adapter.notifyDataSetChanged();
+        }
+    }
 }

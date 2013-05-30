@@ -25,8 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-public class KeyActivity extends Activity implements NfcAdapter.CreateNdefMessageCallback {
-    NfcAdapter mNfcAdapter;
+public class KeyActivity extends Activity {
 
     ListView lv2;
 
@@ -58,15 +57,6 @@ public class KeyActivity extends Activity implements NfcAdapter.CreateNdefMessag
         setupSidebar();
 
         loadKeyFragment(true);
-
-        mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
-        if(mNfcAdapter == null){
-            Toast.makeText(this, "NFC is not available", Toast.LENGTH_LONG).show();
-            finish();
-            return;
-        }
-        // Register callback
-        mNfcAdapter.setNdefPushMessageCallback(this,this);
     }
 
 
@@ -97,6 +87,15 @@ public class KeyActivity extends Activity implements NfcAdapter.CreateNdefMessag
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "home").commit();
     }
 
+    private void loadExchangeFragment() {
+        fragment = new ExchangeFragment();
+        Bundle args = new Bundle();
+        //args.putInt(KeyFragment.ARG_PLANET_NUMBER, position);
+        fragment.setArguments(args);
+
+        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "exchange").commit();
+    }
+
     private void loadKeyFragment(boolean forPublicKeys) {
         fragment = new KeyFragment();
         Bundle args = new Bundle();
@@ -115,6 +114,9 @@ public class KeyActivity extends Activity implements NfcAdapter.CreateNdefMessag
                 case 0:
                     loadHomeFragment();
                     break;
+                case 1:
+                    loadExchangeFragment();
+                    break;
                 case 3:
                     loadKeyFragment(true);
                     break;
@@ -132,53 +134,10 @@ public class KeyActivity extends Activity implements NfcAdapter.CreateNdefMessag
     }
 
     @Override
-    public NdefMessage createNdefMessage(NfcEvent event){
-
-        String text =("Hi Shane!\n\n"+
-                "Beam Time: "+System.currentTimeMillis());
-
-
-        NdefMessage msg = new NdefMessage(NdefRecord.createMime("application/vnd.com.example.android.beam", text.getBytes()));
-            /**
-             * The Android Application Record (AAR) is commented out. When a device
-             * receives a push with an AAR in it, the application specified in the AAR
-             * is guaranteed to run. The AAR overrides the tag dispatch system.
-             * You can add it back in to guarantee that this
-             * activity starts when receiving a beamed message. For now, this code
-             * uses the tag dispatch system.
-             */
-            //,NdefRecord.createApplicationRecord("com.example.android.beam")
-
-        return msg;
-    }
-
-    @Override
-    public void onResume(){
-        super.onResume();
-        // Check to see that the Activity started due to an Android Beam
-        if(NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())){
-            processIntent(getIntent());
-        }
-    }
-
-    @Override
     public void onNewIntent(Intent intent){
         // onResume gets called after this to handle the intent
-        setIntent(intent);
+        this.setIntent(intent);
     }
 
-    void processIntent(Intent intent){
-        Parcelable[] rawMsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
-
-        // only one message sent during the beam
-        NdefMessage msg = (NdefMessage) rawMsgs[0];
-
-        // record 0 contains the MIME type, record 1 is the AAR, if present
-        String messageReceived = new String(msg.getRecords()[0].getPayload());
-
-        GPGFactory.addKey(messageReceived);
-
-        Toast.makeText(this, messageReceived, Toast.LENGTH_LONG).show();
-    }
 
 }
