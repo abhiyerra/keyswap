@@ -40,15 +40,9 @@ public class KeyActivity extends SlidingActivity implements NfcAdapter.CreateNde
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        try {
-            GPGBinding gpg = new GPGCli();
-            List<PublicKey> keys = gpg.GetKeys();
-            if(keys.size() > 0) {
-                Log.w("LookoutPG", gpg.GetKeys().get(0).GetKeyId());
-            }
-        } catch(IOException e) {
-
-        }
+        GPGBinding gpg = new GPGCli();
+        gpg.ImportKey("/sdcard/key.asc");
+        gpg.GetKeys();
 
         setupKeyListFragment();
         setupSidebar();

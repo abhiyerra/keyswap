@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface GPGBinding {
 
-    void ImportKey(String keyFile) throws IOException;
-    String ExportAsAsciiArmor(PublicKey key) throws IOException;
-    List<PublicKey> GetKeys() throws IOException;
+    void ImportKey(String keyFile);
+    String ExportAsAsciiArmor(String keyId);
+    List<PublicKey> GetKeys();
 }
