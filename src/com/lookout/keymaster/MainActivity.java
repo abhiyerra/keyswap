@@ -160,8 +160,8 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
     @Override
     public NdefMessage createNdefMessage(NfcEvent event){
         NdefMessage msg = new NdefMessage(
-                NdefRecord.createMime("application/vnd.com.example.android.beam", GPGFactory.getPublicKey().getBytes()),
-                NdefRecord.createMime("application/vnd.com.example.android.beam", GPGFactory.getSignedKey().getBytes()));
+                NdefRecord.createMime("application/vnd.com.lookout.keymaster", GPGFactory.getPublicKey().getBytes()),
+                NdefRecord.createMime("application/vnd.com.lookout.keymaster", GPGFactory.getSignedKey().getBytes()));
 
         /**
          * The Android Application Record (AAR) is commented out. When a device

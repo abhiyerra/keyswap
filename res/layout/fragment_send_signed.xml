@@ -8,6 +8,6 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
+            android:text="Send the signed key back"
             android:id="@+id/textView" android:layout_gravity="right|center_vertical"/>
 </LinearLayout>

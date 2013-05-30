@@ -1,6 +1,7 @@
 package com.lookout.keymaster.fragments;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,12 +52,18 @@ public class KeyTrustLevelFragment extends Fragment {
 
                 GPGFactory.signReceivedKey(sign_trust);
 
-
+                loadSendSignedFragment();
             }
         });
 
         getActivity().setTitle("Key Exchange");
         return rootView;
+    }
+
+    private void loadSendSignedFragment() {
+        Fragment fragment = new SendSignedFragment();
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "send_signed").commit();
     }
 }
 
