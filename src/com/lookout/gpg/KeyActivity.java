@@ -42,7 +42,7 @@ public class KeyActivity extends SlidingActivity implements NfcAdapter.CreateNde
 
         GPGBinding gpg = new GPGCli();
         gpg.ImportKey("/sdcard/key.asc");
-        gpg.GetKeys();
+        List<GPGKey> keys = gpg.GetKeys();
 
         setupKeyListFragment();
         setupSidebar();
