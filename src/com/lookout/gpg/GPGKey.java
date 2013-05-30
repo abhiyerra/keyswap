@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class GPGKey {
     private GPGRecord parentKey;
+    private String fingerprint;
     private ArrayList<GPGRecord> userIds;
     private ArrayList<GPGRecord> subKeys;
 
@@ -40,6 +41,14 @@ public class GPGKey {
 
     public GPGRecord getParentKey() {
         return parentKey;
+    }
+
+    public String getFingerprint() {
+        return fingerprint;
+    }
+
+    public void setFingerprint(String fingerprint) {
+        this.fingerprint = fingerprint;
     }
 
     public ArrayList<GPGRecord> getUserIds() {

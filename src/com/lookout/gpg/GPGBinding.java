@@ -1,16 +1,18 @@
 package com.lookout.gpg;
 
+import android.content.Context;
+
 import java.util.List;
 
 public interface GPGBinding {
 
-    List<GPGKey> GetPublicKeys();
-    List<GPGKey> GetSecretKeys();
+    List<GPGKey> getPublicKeys();
+    List<GPGKey> getSecretKeys();
 
-    void ExportKey(String destination, String keyId);
-    void ImportKey(String source);
+    void exportKey(String destination, String keyId);
+    void importKey(String source);
 
-    void PushToKeyServer(String server, String keyId);
+    void pushToKeyServer(String server, String keyId);
 
-    String KeyAsAsciiArmor(String keyId);
+    String keyAsAsciiArmor(String keyId);
 }

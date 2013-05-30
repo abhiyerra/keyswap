@@ -40,6 +40,9 @@ public class KeyActivity extends Activity  implements NfcAdapter.CreateNdefMessa
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        KeyringSyncManager.getInstance().sync(this.getApplicationContext());
+
         setContentView(R.layout.main);
 
         fragmentManager = getFragmentManager();

@@ -15,7 +15,7 @@ public class GPGFactory {
 
     public static void buildData() {
         keys = new ArrayList<Map<String, String>>();
-        ArrayList<GPGKey> publicKeys = GPGCli.GetInstance().GetPublicKeys();
+        ArrayList<GPGKey> publicKeys = GPGCli.getInstance().getPublicKeys();
         for(GPGKey key : publicKeys) {
             keys.add(putData(key.getPrimaryKeyId().getUserId(), key.getKeyId(), key.getParentKey().getOwnerTrust().toString()));
         }
