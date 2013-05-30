@@ -3,7 +3,6 @@ package com.lookout.gpg;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.ListActivity;
 import android.content.Intent;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
@@ -13,17 +12,12 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
-import android.widget.*;
-import android.util.Log;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.logging.Logger;
 
 public class KeyActivity extends Activity {
 
@@ -134,10 +128,32 @@ public class KeyActivity extends Activity {
     }
 
     @Override
-    public void onNewIntent(Intent intent){
-        // onResume gets called after this to handle the intent
-        this.setIntent(intent);
+    public NdefMessage createNdefMessage(NfcEvent event){
+
+        String text =("Hi Shane!\n\n"+
+                "Beam Time: "+System.currentTimeMillis());
+
+
+        NdefMessage msg = new NdefMessage(NdefRecord.createMime("application/vnd.com.example.android.beam", text.getBytes()));
+        /**
+         * The Android Application Record (AAR) is commented out. When a device
+         * receives a push with an AAR in it, the application specified in the AAR
+         * is guaranteed to run. The AAR overrides the tag dispatch system.
+         * You can add it back in to guarantee that this
+         * activity starts when receiving a beamed message. For now, this code
+         * uses the tag dispatch system.
+         */
+        //,NdefRecord.createApplicationRecord("com.example.android.beam")
+
+        return msg;
     }
 
-
+    @Override
+    public void onResume(){
+        super.onResume();
+        // Check to see that the Activity started due to an Android Beam
+        if(NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())){
+            processIntent(getIntent());
+        }
+    }
 }

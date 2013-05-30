@@ -11,7 +11,6 @@ import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -22,6 +21,7 @@ import java.util.Locale;
 import java.util.Map;
 
 public class ExchangeFragment extends Fragment implements NfcAdapter.CreateNdefMessageCallback {
+
     SimpleAdapter adapter;
 
     NfcAdapter mNfcAdapter;

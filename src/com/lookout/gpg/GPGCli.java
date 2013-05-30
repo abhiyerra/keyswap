@@ -2,7 +2,9 @@ package com.lookout.gpg;
 
 import android.util.Log;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,17 +16,29 @@ public class GPGCli implements GPGBinding {
         Log.i("LookoutPG", "GPGCli initialized");
     }
 
-    public void ImportKey(String keyFile) {
-        Exec(GPG_PATH, "--yes", "--import", keyFile);
+    public void ExportKey(String destination, String keyId) {
+        Exec(GPG_PATH, "--yes", "--output", destination, "--export", keyId);
 
-        Log.i("LookoutPG", keyFile + " imported");
+        Log.i("LookoutPG", keyId + " exported to " + destination);
     }
 
-    public String ExportAsAsciiArmor(String keyId) {
+    public void ImportKey(String source) {
+        Exec(GPG_PATH, "--yes", "--import", source);
+
+        Log.i("LookoutPG", source + " imported");
+    }
+
+    public String KeyAsAsciiArmor(String keyId) {
         String output = Exec(GPG_PATH, "--armor", "--export", keyId);
         Log.i("LookoutPG", keyId + " exported");
 
         return output;
+    }
+
+    public void PushToKeyServer(String server, String keyId) {
+        Exec(GPG_PATH, "--yes", "--key-server", server, "--send-key", keyId);
+
+        Log.i("LookoutPG", keyId + " pushed to " + server);
     }
 
     public ArrayList<GPGKey> GetKeys() {
