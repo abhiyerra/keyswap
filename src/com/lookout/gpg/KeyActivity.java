@@ -1,5 +1,8 @@
 package com.lookout.gpg;
 
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.nfc.NdefMessage;
@@ -8,6 +11,8 @@ import android.nfc.NfcAdapter;
 import android.nfc.NfcEvent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.v4.widget.DrawerLayout;
+import android.view.View;
 import android.widget.*;
 import android.util.Log;
 
@@ -20,14 +25,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivity;
-
-public class KeyActivity extends SlidingActivity implements NfcAdapter.CreateNdefMessageCallback {
+public class KeyActivity extends Activity implements NfcAdapter.CreateNdefMessageCallback {
     NfcAdapter mNfcAdapter;
 
-    ArrayList<Map<String, String>> keys;
-    SimpleAdapter adapter;
+    ListView lv2;
+
+    Fragment fragment;
+    FragmentManager fragmentManager;
+
+    private DrawerLayout mDrawerLayout;
+
 
     public static String TRUST_DONT_KNOW          = "1";
     public static String TRUST_I_DO_NOT_TRUST     = "2";
@@ -40,12 +47,17 @@ public class KeyActivity extends SlidingActivity implements NfcAdapter.CreateNde
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+        fragmentManager = getFragmentManager();
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         GPGBinding gpg = new GPGCli();
         gpg.ImportKey("/sdcard/key.asc");
         gpg.GetKeys();
 
-        setupKeyListFragment();
         setupSidebar();
+
+        loadKeyFragment(true);
 
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if(mNfcAdapter == null){
@@ -57,32 +69,10 @@ public class KeyActivity extends SlidingActivity implements NfcAdapter.CreateNde
         mNfcAdapter.setNdefPushMessageCallback(this,this);
     }
 
-    private void setupKeyListFragment() {
 
-        buildData();
-
-
-        ListView lv = (ListView) findViewById(R.id.keyView);
-        String[] from = { "full_name", "pgp_fingerprint" };
-        int[] to = { R.id.full_name, R.id.pgp_fingerprint };
-
-        adapter = new SimpleAdapter(this, keys,
-                R.layout.key_list_item, from, to);
-        lv.setAdapter(adapter);
-    }
 
     private void setupSidebar() {
-        setBehindContentView(R.layout.menu);
-        SlidingMenu menu = getSlidingMenu();
-        menu.setMode(SlidingMenu.LEFT);
-        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
-        menu.setShadowWidthRes(R.dimen.shadow_width);
-        menu.setShadowDrawable(R.drawable.shadow);
-        menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
-        menu.setFadeDegree(0.35f);
-        setSlidingActionBarEnabled(true);
-
-        ListView lv2 = (ListView) findViewById(R.id.main_menu_list);
+        lv2 = (ListView) findViewById(R.id.left_drawer);
         String[] values = new String[] {
                 "Home",
                 "Exchange Keys",
@@ -93,22 +83,56 @@ public class KeyActivity extends SlidingActivity implements NfcAdapter.CreateNde
 
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getApplicationContext(),
                 android.R.layout.simple_list_item_1, values);
+        lv2.setOnItemClickListener(new DrawerItemClickListener());
+
         lv2.setAdapter(adapter2);
     }
 
-    private void buildData() {
-        keys = new ArrayList<Map<String, String>>();
-        keys.add(putData("Abhi Yerra", "EC92C369", "1"));
-        keys.add(putData("Shane Wilton", "02C834B6", "2"));
-        keys.add(putData("Derek Halliday", "33D8457A", "3"));
+    private void loadHomeFragment() {
+        fragment = new HomeFragment();
+        Bundle args = new Bundle();
+        //args.putInt(KeyFragment.ARG_PLANET_NUMBER, position);
+        fragment.setArguments(args);
+
+        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "home").commit();
     }
 
-    private HashMap<String, String> putData(String name, String pgp_fingerprint, String trust_level) {
-        HashMap<String, String> item = new HashMap<String, String>();
-        item.put("full_name", name);
-        item.put("pgp_fingerprint", pgp_fingerprint);
-        item.put("trust_level", trust_level);
-        return item;
+    private void loadKeyFragment(boolean forPublicKeys) {
+        fragment = new KeyFragment();
+        Bundle args = new Bundle();
+        args.putBoolean("ForPublicKeys", forPublicKeys);
+        fragment.setArguments(args);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "key").commit();
+    }
+
+    private void selectItem(int position) {
+        switch(position) {
+            case 0:
+                loadHomeFragment();
+                break;
+            case 3:
+                loadKeyFragment(true);
+                break;
+            case 4:
+                loadKeyFragment(false);
+                break;
+        }
+
+
+        // update selected item and title, then close the drawer
+        lv2.setItemChecked(position, true);
+        //setTitle(mPlanetTitles[position]);
+        mDrawerLayout.closeDrawer(lv2);
+    }
+
+    /* The click listner for ListView in the navigation drawer */
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            selectItem(position);
+        }
     }
 
     @Override
@@ -169,9 +193,7 @@ public class KeyActivity extends SlidingActivity implements NfcAdapter.CreateNde
         // record 0 contains the MIME type, record 1 is the AAR, if present
         String messageReceived = new String(msg.getRecords()[0].getPayload());
 
-        keys.add(putData(messageReceived, "",""));
-
-        adapter.notifyDataSetChanged();
+        GPGFactory.addKey(messageReceived);
 
         Toast.makeText(this, messageReceived, Toast.LENGTH_LONG).show();
     }
