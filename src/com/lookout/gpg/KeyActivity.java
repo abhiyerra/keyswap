@@ -23,6 +23,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+
 public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMessageCallback {
     NfcAdapter mNfcAdapter;
 
@@ -49,6 +51,18 @@ public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMe
         } catch(IOException e) {
 
         }
+
+        SlidingMenu menu = new SlidingMenu(this);
+        menu.setMode(SlidingMenu.LEFT);
+        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+        menu.setShadowWidthRes(R.dimen.shadow_width);
+        menu.setShadowDrawable(R.drawable.shadow);
+        menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+        menu.setFadeDegree(0.35f);
+        menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+        //menu.setMenu(R.layout.menu);
+
+        buildData();
 
         ArrayList<Map<String, String>> list = buildData();
         String[] from = { "full_name", "pgp_fingerprint" };
