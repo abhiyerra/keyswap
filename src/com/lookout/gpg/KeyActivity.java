@@ -24,8 +24,9 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivity;
 
-public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMessageCallback {
+public class KeyActivity extends SlidingActivity implements NfcAdapter.CreateNdefMessageCallback {
     NfcAdapter mNfcAdapter;
 
     ArrayList<Map<String, String>> keys;
@@ -40,7 +41,7 @@ public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMe
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.main);
+        setContentView(R.layout.main);
 
         try {
             GPGBinding gpg = new GPGCli();
@@ -52,28 +53,32 @@ public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMe
 
         }
 
-
-
-        SlidingMenu menu = new SlidingMenu(this);
-        /*
-        menu.setMode(SlidingMenu.LEFT);
-        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-        menu.setShadowWidthRes(R.dimen.shadow_width);
-        menu.setShadowDrawable(R.drawable.shadow);
-        menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
-        menu.setFadeDegree(0.35f);
-        menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
-        //menu.setMenu(R.layout.menu);
-        */
-
         buildData();
 
+        ListView lv = (ListView) findViewById(R.id.keyView);
         String[] from = { "full_name", "pgp_fingerprint" };
         int[] to = { R.id.full_name, R.id.pgp_fingerprint };
 
         adapter = new SimpleAdapter(this, keys,
                 R.layout.key_list_item, from, to);
-        setListAdapter(adapter);
+        lv.setAdapter(adapter);
+
+
+        setBehindContentView(R.layout.menu);
+
+
+        SlidingMenu menu = getSlidingMenu();
+        menu.setMode(SlidingMenu.LEFT);
+        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
+        menu.setShadowWidthRes(R.dimen.shadow_width);
+        menu.setShadowDrawable(R.drawable.shadow);
+        menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+        menu.setFadeDegree(0.35f);
+        // menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+        setSlidingActionBarEnabled(true);
+        //menu.setMenu(R.layout.menu);
+
+
 
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if(mNfcAdapter == null){
@@ -103,7 +108,7 @@ public class KeyActivity extends ListActivity implements NfcAdapter.CreateNdefMe
     @Override
     public NdefMessage createNdefMessage(NfcEvent event){
 
-        String text =("This is an encrypted item being sent!\n\n"+
+        String text =("Hi Shane!\n\n"+
                 "Beam Time: "+System.currentTimeMillis());
 
         /*
