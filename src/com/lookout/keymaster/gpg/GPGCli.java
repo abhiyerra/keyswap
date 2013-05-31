@@ -92,7 +92,7 @@ public class GPGCli implements GPGBinding {
         return keys;
     }
 
-    public void changeOwnerTrust(String fingerprint, GPGRecord.TrustLevel trustLevel) {
+    public void signKey(String fingerprint, GPGRecord.TrustLevel trustLevel) {
         int gpgTrustLevel = 1;
         switch(trustLevel) {
             case New:

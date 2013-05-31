@@ -13,7 +13,7 @@ public interface GPGBinding {
     void exportKey(String destination, String keyId);
     void importKey(String source);
 
-    void changeOwnerTrust(String fingerprint, GPGRecord.TrustLevel trustLevel);
+    void signKey(String fingerprint, GPGRecord.TrustLevel trustLevel);
 
     void pushToKeyServer(String server, String keyId);
 
