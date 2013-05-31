@@ -24,6 +24,8 @@ import com.lookout.keymaster.gpg.KeyringSyncManager;
 
 public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMessageCallback {
 
+    private static boolean firstLoad = true;
+
     NfcAdapter mNfcAdapter;
 
     ListView lv2;
@@ -59,7 +61,10 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
             mNfcAdapter.setNdefPushMessageCallback(this, this);
         }
 
-        loadFragment(new HomeFragment());
+        if(firstLoad) {
+            loadFragment(new HomeFragment());
+            firstLoad = false;
+        }
     }
 
 
