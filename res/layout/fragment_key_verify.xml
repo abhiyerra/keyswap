@@ -52,7 +52,7 @@
                 android:layout_gravity="left|center_vertical"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:text="John Doe"
+                android:text="@+id/your_full_name"
                 style="@android:style/TextAppearance.Medium"/>
 
         <TextView
@@ -62,7 +62,7 @@
                 android:layout_toRightOf="@+id/your_full_name"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:text="john_doe@gmail.com"
+                android:text="@+id/your_email"
                 android:layout_alignParentRight="true"
                 android:gravity="right"
                 style="@android:style/TextAppearance.Holo.Small"/>
@@ -71,7 +71,7 @@
                 android:id="@+id/your_fingerprint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="9062 865A 46E8 C749 2BF1 88D7 1426 C7DC 3F51 E16F"
+                android:text="@+id/your_fingerprint"
                 android:layout_below="@+id/your_full_name"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="50dp"
@@ -108,7 +108,7 @@
                 android:layout_gravity="left|center_vertical"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:text="Jane Doe"
+                android:text="@+id/their_full_name"
                 style="@android:style/TextAppearance.Medium"/>
 
         <TextView
@@ -118,16 +118,16 @@
                 android:layout_toRightOf="@+id/your_full_name"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:text="jane_doe@gmail.com"
+                android:text="@+id/their_email"
                 android:layout_alignParentRight="true"
                 android:gravity="right"
                 style="@android:style/TextAppearance.Holo.Small"/>
 
         <TextView
-                android:id="@+id/their_short_id"
+                android:id="@+id/their_fingerprint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="9062 865A 46E8 C749 2BF1 88D7 1426 C7DC 3F51 E16F"
+                android:text="@+id/their_fingerprint"
                 android:layout_below="@+id/their_full_name"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="50dp"
