@@ -27,6 +27,11 @@ public class KeyVerifyFragment extends Fragment {
 
         rootView = inflater.inflate(R.layout.fragment_key_verify, container, false);
 
+        setTextForId(R.id.your_email, "");
+        setTextForId(R.id.your_full_name, "Abhi Yerra");
+        setTextForId(R.id.your_short_id, "1234");
+        setTextForId(R.id.your_created, "");
+
         setTextForId(R.id.their_email, "");
         setTextForId(R.id.their_full_name, "Abhi Yerra");
         setTextForId(R.id.their_short_id, "1234");
