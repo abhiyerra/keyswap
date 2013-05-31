@@ -6,8 +6,22 @@
               android:layout_height="match_parent">
 
     <TextView
+            android:id="@+id/exchangeReturnPrompt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Send the signed key back"
-            android:id="@+id/textView" android:layout_gravity="right|center_vertical"/>
+            android:layout_gravity="left|center_vertical" android:layout_row="0"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/exchange_return_prompt"
+            style="@android:style/TextAppearance.Holo.Large"
+            android:layout_alignParentTop="true">
+    </TextView>
+
+    <View
+            android:id="@+id/divider"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/exchangeReturnPrompt"
+            android:background="@android:color/darker_gray"/>
 </LinearLayout>

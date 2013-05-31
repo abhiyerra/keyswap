@@ -6,10 +6,24 @@
               android:layout_height="match_parent">
 
     <TextView
+            android:id="@+id/exchangeTrustPrompt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="How much do you trust them?"
-            android:layout_gravity="left"/>
+            android:layout_gravity="left|center_vertical" android:layout_row="0"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/exchange_trust_prompt"
+            style="@android:style/TextAppearance.Holo.Large"
+            android:layout_alignParentTop="true">
+    </TextView>
+
+    <View
+            android:id="@+id/divider"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/exchangeTrustPrompt"
+            android:background="@android:color/darker_gray"/>
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
@@ -18,58 +32,73 @@
         <RadioButton
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="unknown"
+                android:text="@string/exchange_trust_unknown"
                 android:checked="true"
+                style="@android:style/TextAppearance.Holo.Medium"
                 android:id="@+id/unknown_trust_level"/>
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="You just met them and have no idea how serious they are about this stuff."
+                android:text="@string/exchange_trust_unknown_desc"
+                android:layout_marginLeft="31dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_gravity="left"/>
 
         <RadioButton
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="none"
+                android:text="@string/exchange_trust_none"
+                style="@android:style/TextAppearance.Holo.Medium"
                 android:id="@+id/none_trust_level"/>
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="You do NOT trust them - only about as far as you could throw them."
+                android:text="@string/exchange_trust_none_desc"
+                android:layout_marginLeft="31dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_gravity="left"/>
 
         <RadioButton
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="marginal"
+                android:text="@string/exchange_trust_marginal"
+                style="@android:style/TextAppearance.Holo.Medium"
                 android:id="@+id/marginal_trust_level"/>
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="They have a pretty good understanding of key signing and validate before signing."
+                android:text="@string/exchange_trust_marginal_desc"
+                android:layout_marginLeft="31dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_gravity="left"/>
 
         <RadioButton
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="full"
+                android:text="@string/exchange_trust_full"
+                style="@android:style/TextAppearance.Holo.Medium"
                 android:id="@+id/full_trust_level"/>
 
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="You trust their signature on a key as good as your own."
+                android:text="@string/exchange_trust_full_desc"
+                android:layout_marginLeft="31dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_gravity="left"/>
     </RadioGroup>
-
-
 
     <Button
             android:id="@+id/sign_key_button"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_gravity="center"
             android:text="Sign"/>
 </LinearLayout>
