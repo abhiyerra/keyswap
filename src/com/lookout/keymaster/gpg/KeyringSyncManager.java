@@ -44,6 +44,9 @@ public class KeyringSyncManager {
 
     public void importPublicKeyring() {
         for(File file : new File(storagePath).listFiles()) {
+            if(file.getName().equals("Keyring.gpg")) {
+                continue;
+            }
             GPGCli.getInstance().importKey(file.getAbsolutePath());
             file.delete();
         }

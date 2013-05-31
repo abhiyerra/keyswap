@@ -28,7 +28,7 @@ public class GPGCli implements GPGBinding {
     }
 
     public ArrayList<GPGKey> getPublicKeys() {
-        String rawList = Exec(GPG_PATH, "--with-colons", "--list-keys");
+        String rawList = Exec(GPG_PATH, "--with-colons", "--with-fingerprint", "--list-keys");
         Log.i("LookoutPG", "Got public keys");
 
         ArrayList<GPGKey> keys = new ArrayList<GPGKey>();
@@ -62,7 +62,7 @@ public class GPGCli implements GPGBinding {
     }
 
     public ArrayList<GPGKey> getSecretKeys() {
-        String rawList = Exec(GPG_PATH, "--with-colons", "--list-secret-keys");
+        String rawList = Exec(GPG_PATH, "--with-colons", "--with-fingerprint", "--list-secret-keys");
         Log.i("LookoutPG", "Got secret keys");
 
         ArrayList<GPGKey> keys = new ArrayList<GPGKey>();
