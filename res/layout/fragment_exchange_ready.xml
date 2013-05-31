@@ -42,7 +42,7 @@
                 android:layout_column="0"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:text="John Doe"
+                android:text="@+id/sending_full_name"
                 style="@android:style/TextAppearance.Medium"/>
 
         <TextView
@@ -52,7 +52,7 @@
                 android:layout_toRightOf="@+id/sending_full_name"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:text="john_doe@gmail.com"
+                android:text="@+id/sending_email"
                 android:layout_alignParentRight="true"
                 android:gravity="right"
                 style="@android:style/TextAppearance.Holo.Small"/>
@@ -66,7 +66,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
                 style="@android:style/TextAppearance.Holo.Small"
-                android:text="0AF4B6D0"
+                android:text="@+id/sending_short_id"
                 android:gravity="left" android:layout_alignParentTop="false"/>
     </RelativeLayout>
 
