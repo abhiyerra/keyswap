@@ -2,10 +2,7 @@ package com.lookout.keymaster.gpg;
 
 import android.util.Log;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -93,6 +90,38 @@ public class GPGCli implements GPGBinding {
         scanner.close();
 
         return keys;
+    }
+
+    public void changeOwnerTrust(String fingerprint, GPGRecord.TrustLevel trustLevel) {
+        int gpgTrustLevel = 1;
+        switch(trustLevel) {
+            case New:
+                gpgTrustLevel = 1;
+                break;
+            case None:
+                gpgTrustLevel = 2;
+            case Marginal:
+                gpgTrustLevel = 3;
+                break;
+            case Full:
+                gpgTrustLevel = 4;
+                break;
+            case Ultimate:
+                gpgTrustLevel = 5;
+                break;
+        }
+
+        String trustDBRecord = fingerprint + ":" + gpgTrustLevel + ":";
+        try {
+            PrintWriter printWriter = new PrintWriter("/sdcard/keymaster/tempTrustDb");
+            printWriter.print(trustDBRecord);
+            printWriter.close();
+
+            Exec(GPG_PATH, "--import-ownertrust", "/sdcard/keymaster/tempTrustDb");
+            new File("/sdcard/keymaster/tempTrustDb").delete();
+        } catch(Exception e) {
+        }
+
     }
 
     public void exportKeyring(String destination) {
