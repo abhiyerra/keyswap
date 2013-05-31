@@ -3,35 +3,28 @@
               android:id="@+id/public_key_layout"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:orientation="vertical">
+              android:orientation="vertical"
+              android:background="@drawable/box"
+              android:layout_marginLeft="10dp" android:layout_marginTop="5dp" android:layout_marginRight="10dp"
+              android:layout_marginBottom="10dp" android:gravity="center_vertical">
 
     <TextView
             android:id="@+id/full_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@+id/full_name"
-            android:layout_gravity="left|center_vertical" android:layout_row="0"
+            android:text="John Doe"
+            android:layout_gravity="left|center_vertical"
+            android:layout_row="0"
             android:layout_column="0"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             style="@android:style/TextAppearance.Medium"/>/>
 
     <TextView
-            android:id="@+id/created"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@+id/created"
-            android:layout_toRightOf="@+id/full_name"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_alignParentRight="true"
-            style="@android:style/TextAppearance.Holo.Small" android:gravity="right"/>
-
-    <TextView
             android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@+id/email"
+            android:text="john_doe@gmail.com"
             android:layout_below="@+id/full_name"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
@@ -42,12 +35,12 @@
             android:id="@+id/short_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@+id/short_id"
-            android:layout_below="@+id/full_name"
-            android:layout_toRightOf="@+id/email"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/full_name"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
             android:layout_alignParentRight="true"
-            style="@android:style/TextAppearance.Holo.Small" android:gravity="right"/>
+            style="@android:style/TextAppearance.Holo.Small"
+            android:text="0AF4B6D0"
+            android:gravity="right" android:layout_alignParentTop="false"/>
 
 </RelativeLayout>
