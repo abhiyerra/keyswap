@@ -157,10 +157,16 @@ public class GPGCli implements GPGBinding {
 
     }
 
-    public void exportKeyring(String destination) {
+    public void exportPublicKeyring(String destination) {
+        String output = Exec(GPG_PATH, "--yes", "--output", destination, "--export");
+
+        Log.i("Keymaster", "Public Keyring exported");
+    }
+
+    public void exportSecretKeyring(String destination) {
         String output = Exec(GPG_PATH, "--yes", "--output", destination, "--export-secret-keys");
 
-        Log.i("Keymaster", "Keyring exported");
+        Log.i("Keymaster", "Secret Keyring exported");
     }
 
     public void exportKey(String destination, String keyId) {

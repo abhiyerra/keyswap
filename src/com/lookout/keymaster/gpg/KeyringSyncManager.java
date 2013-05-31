@@ -32,18 +32,23 @@ public class KeyringSyncManager {
 
     public void sync(Context context) {
         this.importKeys();
-        this.exportKeyring();
+        this.exportPublicKeyring();
+        this.exportSecretKeyring();
 
         context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + storagePath)));
     }
 
-    public void exportKeyring() {
-        GPGCli.getInstance().exportKeyring(new File(storagePath, "/Keyring.gpg").getAbsolutePath());
+    public void exportPublicKeyring() {
+        GPGCli.getInstance().exportPublicKeyring(new File(storagePath, "/PublicKeyring").getAbsolutePath());
+    }
+
+    public void exportSecretKeyring() {
+        GPGCli.getInstance().exportSecretKeyring(new File(storagePath, "/SecretKeyring").getAbsolutePath());
     }
 
     public void importKeys() {
         for(File file : new File(storagePath).listFiles()) {
-            if(file.getName().equals("Keyring.gpg")) {
+            if(file.getName().equals("PublicKeyring") || file.getName().equals("SecretKeyring")) {
                 continue;
             }
             GPGCli.getInstance().importKey(file.getAbsolutePath());

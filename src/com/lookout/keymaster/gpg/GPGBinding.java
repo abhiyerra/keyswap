@@ -14,7 +14,9 @@ public interface GPGBinding {
 
     List<GPGKeyPair> getKeyPairs();
 
-    void exportKeyring(String destination);
+    void exportPublicKeyring(String destination);
+    void exportSecretKeyring(String destination);
+
     void exportKey(String destination, String keyId);
     void importKey(String source);
 
