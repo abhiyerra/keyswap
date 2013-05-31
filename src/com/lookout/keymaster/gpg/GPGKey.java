@@ -56,6 +56,10 @@ public class GPGKey {
         return fingerprint;
     }
 
+    public String getFormattedFingerprint() {
+        return fingerprint.replaceAll("....(?=.)", "$0 ");
+    }
+
     public void setFingerprint(String fingerprint) {
         this.fingerprint = fingerprint;
     }
