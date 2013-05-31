@@ -59,7 +59,7 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
             mNfcAdapter.setNdefPushMessageCallback(this, this);
         }
 
-        new KeyringSyncTask().execute();
+        loadFragment(new HomeFragment());
     }
 
 

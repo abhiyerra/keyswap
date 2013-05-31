@@ -2,6 +2,7 @@ package com.lookout.keymaster.fragments;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +10,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import com.lookout.keymaster.gpg.GPGCli;
 import com.lookout.keymaster.gpg.GPGFactory;
 import com.lookout.keymaster.R;
+import com.lookout.keymaster.gpg.GPGKey;
 
 public class KeyVerifyFragment extends Fragment {
     SimpleAdapter adapter;
@@ -28,7 +31,7 @@ public class KeyVerifyFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_key_verify, container, false);
 
         setTextForId(R.id.your_email, "");
-        setTextForId(R.id.your_full_name, "Abhi Yerra");
+        setTextForId(R.id.your_full_name, "");
         setTextForId(R.id.your_short_id, "1234");
         setTextForId(R.id.your_created, "");
 
@@ -57,4 +60,23 @@ public class KeyVerifyFragment extends Fragment {
         tv.setText(txt);
     }
 
+
+    private class SendingKeyTask extends AsyncTask<Void, Void, GPGKey> {
+        String keyId;
+
+        public SendingKeyTask(String keyId)  {
+            this.keyId = keyId;
+        }
+
+        protected GPGKey doInBackground(Void... voids) {
+            return GPGCli.getInstance().getPublicKey(keyId);
+        }
+
+        protected void onPostExecute(GPGKey result) {
+            setTextForId(R.id.sending_short_id, keyId);
+            setTextForId(R.id.sending_created, result.getPrimaryKeyId().getCreationDate());
+            setTextForId(R.id.sending_full_name, result.getPrimaryKeyId().getUserId());
+            setTextForId(R.id.sending_email, "");
+        }
+    }
 }
