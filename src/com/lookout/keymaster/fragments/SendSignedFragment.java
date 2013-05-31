@@ -56,6 +56,7 @@ public class SendSignedFragment extends Fragment {
         }
 
         protected GPGKey doInBackground(Void... voids) {
+            GPGFactory.setSignedKey(this.key);
             return GPGCli.getInstance().getPublicKey(keyId);
         }
 

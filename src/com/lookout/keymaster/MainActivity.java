@@ -19,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.lookout.keymaster.fragments.*;
+import com.lookout.keymaster.gpg.GPGCli;
 import com.lookout.keymaster.gpg.GPGFactory;
 import com.lookout.keymaster.gpg.KeyringSyncManager;
 
@@ -189,7 +190,7 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
         NdefMessage msg = new NdefMessage(
                 NdefRecord.createMime("application/vnd.com.lookout.keymaster.beam", GPGFactory.getPublicKey().getBytes()),
                 NdefRecord.createMime("application/vnd.com.lookout.keymaster.beam", GPGFactory.getPublicKeyId().getBytes()),
-                //NdefRecord.createMime("application/vnd.com.lookout.keymaster.beam", GPGFactory.getSignedKey().getBytes()),
+                NdefRecord.createMime("application/vnd.com.lookout.keymaster.beam", GPGFactory.getSignedKey().getBytes()),
                 NdefRecord.createApplicationRecord("com.lookout.keymaster"));
 
         return msg;
@@ -214,22 +215,26 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
         // record 0 contains the MIME type, record 1 is the AAR, if present
         String receivedKey = new String(msg.getRecords()[0].getPayload());
         String receivedKeyId = new String(msg.getRecords()[1].getPayload());
+        String signedKey = new String(msg.getRecords()[2].getPayload());
 
         Log.i("KeyMaster", "receivedmsg" + receivedKey);
 
-        new AddKeyToKeychainTask(receivedKey, receivedKeyId).execute();
+        new AddKeyToKeychainTask(receivedKey, receivedKeyId, signedKey).execute();
     }
 
     private class AddKeyToKeychainTask extends AsyncTask<Void, Void, Void> {
         String keyArmor, keyId;
+        String signedKey;
 
-        public AddKeyToKeychainTask(String keyArmor, String keyId)  {
+        public AddKeyToKeychainTask(String keyArmor, String keyId, String signedKey)  {
             this.keyArmor = keyArmor;
             this.keyId = keyId;
+            this.signedKey = signedKey;
         }
 
         protected Void doInBackground(Void... voids) {
             GPGFactory.setReceivedKey(keyArmor, keyId);
+            GPGCli.getInstance().importAsciiArmoredKey(this.signedKey);
             GPGFactory.buildData();
 
             return null;

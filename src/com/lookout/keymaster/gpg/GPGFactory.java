@@ -9,6 +9,7 @@ import java.util.Map;
 public class GPGFactory {
     public static ArrayList<Map<String, String>> keys;
 
+    public static String signedKey;
     public static String publicKey, publicKeyId;
     public static String receivedKey, receivedKeyId;
 
@@ -42,6 +43,17 @@ public class GPGFactory {
         HashMap<String, String> x = new HashMap<String, String>();
 
         return x;
+    }
+
+    public static void setSignedKey(String key) {
+        signedKey = key;
+    }
+
+    public static String getSignedKey() {
+        if(signedKey == null)
+            return "";
+
+        return signedKey;
     }
 
     public static void setReceivedKey(String key, String key_id) {
@@ -93,9 +105,4 @@ public class GPGFactory {
             return "";
         }
     }
-
-    public static String getSignedKey() {
-        return "This is a signed key";
-    }
-
 }
