@@ -68,5 +68,5 @@
             android:id="@+id/sign_key_button"
             android:layout_height="60dp"
             android:layout_width="fill_parent"
-            android:text="Sign" android:layout_alignParentBottom="true"/>
+            android:text="Done" android:layout_alignParentBottom="true"/>
 </RelativeLayout>
