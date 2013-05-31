@@ -52,9 +52,9 @@ public class ExchangeReadyFragment extends Fragment {
         }
 
         protected void onPostExecute(GPGKey result) {
-            setTextForId(R.id.sending_short_id, keyId);
-            setTextForId(R.id.sending_full_name, result.getPrimaryKeyId().getUserId());
-            setTextForId(R.id.sending_email, "");
+            setTextForId(R.id.sending_short_id, result.getShortId());
+            setTextForId(R.id.sending_full_name, result.getPrimaryKeyId().getPersonalName());
+            setTextForId(R.id.sending_email, result.getPrimaryKeyId().getEmail());
         }
     }
 }

@@ -176,7 +176,7 @@ public class GPGRecord {
 
     public String getEmail() {
         String[] userIdParts = this.getUserId().split("<");
-        if(userIdParts.length == 0) {
+        if(userIdParts.length < 2) {
             return null;
         }
 
