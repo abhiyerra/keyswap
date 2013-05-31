@@ -9,15 +9,15 @@
             android:id="@+id/exchangeSyncPrompt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left|center_vertical" android:layout_row="0"
+            android:layout_gravity="left|center_vertical"
+            android:layout_margin="10dp"
             android:text="@string/exchange_sync_prompt"
             style="@android:style/TextAppearance.Holo.Large"
-            android:layout_alignParentTop="true" android:layout_margin="10dp">
+            >
     </TextView>
 
     <RelativeLayout
             android:id="@+id/sendSignedBox"
-            android:layout_below="@+id/yourKeyBoxHeader"
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

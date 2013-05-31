@@ -18,45 +18,32 @@
             android:layout_alignParentTop="true">
     </TextView>
 
-    <View
-            android:id="@+id/divider"
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/exchangeReturnPrompt"
-            android:background="@android:color/darker_gray"/>
-
     <RelativeLayout
             android:id="@+id/sendSignedBox"
             android:layout_below="@+id/yourKeyBoxHeader"
             android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_height="wrap_content" android:layout_gravity="left">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:background="@drawable/box"
+            android:layout_marginLeft="10dp" android:layout_marginTop="5dp" android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp" android:gravity="center_vertical" >
 
         <TextView
                 android:id="@+id/signed_full_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left|center_vertical" android:layout_row="0"
-                android:layout_column="0"
+                android:text="Full Name"
+                android:layout_gravity="left|center_vertical"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                style="@android:style/TextAppearance.Medium"/>/>
-
-        <TextView
-                android:id="@+id/signed_created"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/sending_full_name"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_alignParentRight="true"
-                style="@android:style/TextAppearance.Holo.Small" android:gravity="right"/>
+                style="@android:style/TextAppearance.Medium"/>
 
         <TextView
                 android:id="@+id/signed_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Email Address"
                 android:layout_below="@+id/signed_full_name"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
@@ -67,11 +54,36 @@
                 android:id="@+id/signed_short_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/signed_full_name"
-                android:layout_toRightOf="@+id/signed_email"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/signed_full_name"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true"
-                style="@android:style/TextAppearance.Holo.Small" android:gravity="right"/>
+                style="@android:style/TextAppearance.Holo.Small"
+                android:text="Short ID"
+                android:gravity="right" android:layout_alignParentTop="false"/>
     </RelativeLayout>
+
+    <TextView
+            android:id="@+id/exchangeCompleteTapPrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical" android:layout_row="0"
+            android:text="@string/exchange_complete_tap_prompt"
+            style="@android:style/TextAppearance.Holo.Large"
+            android:layout_alignParentTop="true" android:layout_margin="10dp">
+    </TextView>
+
+    <ImageView
+            android:id="@+id/exchangeSyncHands"
+            android:layout_below="@+id/exchangeSyncTapPrompt"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:background="@drawable/box"
+            android:layout_marginLeft="10dp" android:layout_marginTop="5dp" android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp" android:gravity="center_vertical"
+            android:src="@drawable/hand_connect">
+    </ImageView>
+
 </LinearLayout>

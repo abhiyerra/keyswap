@@ -23,6 +23,7 @@
     <string name="exchange_trust_full">full</string>
     <string name="exchange_trust_full_desc">You trust their signature as good as your own.</string>
     <string name="exchange_return_prompt">Send the signed key back to them.</string>
+    <string name="exchange_complete_tap_prompt">Bring your phones together to complete the exchange:</string>
     <string name="exchange_keyserver_prompt">Push to keyserver?</string>
     <string name="exchange_keyserver_warning">Remember, not everyone prefers to have their public key listed on keyservers - so don\'t perform this step without explicit permission from your new contact.</string>
 
