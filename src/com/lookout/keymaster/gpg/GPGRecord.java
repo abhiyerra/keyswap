@@ -107,8 +107,9 @@ public class GPGRecord {
             key.type = Type.SignatureSubpacket;
         }
 
-        char validity = fields[1].charAt(0);
-        key.validity = ParseTrustLevel(validity);
+        if(fields[1].length() > 0) {
+            key.validity = ParseTrustLevel(fields[1].charAt(0));
+        }
 
         key.length = fields[2];
 
