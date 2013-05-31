@@ -38,55 +38,47 @@
             android:id="@+id/yourKeyBox"
             android:layout_below="@+id/yourKeyBoxHeader"
             android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_height="wrap_content" android:layout_gravity="left">
-
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:background="@drawable/box"
+            android:layout_marginLeft="10dp" android:layout_marginTop="5dp" android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp" android:gravity="center_vertical">
 
         <TextView
                 android:id="@+id/your_full_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@+id/your_full_name"
-                android:layout_gravity="left|center_vertical" android:layout_row="0"
-                android:layout_column="0"
+                android:layout_gravity="left|center_vertical"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                style="@android:style/TextAppearance.Medium"/>/>
-
-        <TextView
-                android:id="@+id/your_created"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@+id/your_created"
-                android:layout_toRightOf="@+id/your_full_name"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_alignParentRight="true"
-                style="@android:style/TextAppearance.Holo.Small" android:gravity="right"/>
+                android:text="John Doe"
+                style="@android:style/TextAppearance.Medium"/>
 
         <TextView
                 android:id="@+id/your_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@+id/your_email"
-                android:layout_below="@+id/your_full_name"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"
-                android:paddingBottom="10dp"
+                android:layout_toRightOf="@+id/your_full_name"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="john_doe@gmail.com"
+                android:layout_alignParentRight="true"
+                android:gravity="right"
                 style="@android:style/TextAppearance.Holo.Small"/>
 
         <TextView
-                android:id="@+id/your_short_id"
+                android:id="@+id/your_fingerprint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@+id/your_short_id"
+                android:text="9062 865A 46E8 C749 2BF1 88D7 1426 C7DC 3F51 E16F"
                 android:layout_below="@+id/your_full_name"
-                android:layout_toRightOf="@+id/your_email"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
                 android:layout_alignParentRight="true"
-                style="@android:style/TextAppearance.Holo.Small" android:gravity="right"/>
+                style="@android:style/TextAppearance.Holo.Small" android:gravity="right"
+                android:layout_marginBottom="10dp"/>
 
     </RelativeLayout>
 
@@ -101,55 +93,48 @@
     <RelativeLayout
             android:id="@+id/theirKeyBox"
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_below="@+id/yourKeyBox"
-            android:layout_marginRight="10dp"
-            android:layout_height="wrap_content" android:layout_gravity="left">
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:background="@drawable/box"
+            android:layout_marginLeft="10dp" android:layout_marginTop="5dp" android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp" android:gravity="center_vertical">
 
         <TextView
                 android:id="@+id/their_full_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@+id/their_full_name"
-                android:layout_gravity="left|center_vertical" android:layout_row="0"
-                android:layout_column="0"
+                android:layout_gravity="left|center_vertical"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                style="@android:style/TextAppearance.Medium"/>/>
-
-        <TextView
-                android:id="@+id/their_created"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@+id/their_created"
-                android:layout_toRightOf="@+id/their_full_name"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_alignParentRight="true"
-                style="@android:style/TextAppearance.Holo.Small" android:gravity="right"/>
+                android:text="Jane Doe"
+                style="@android:style/TextAppearance.Medium"/>
 
         <TextView
                 android:id="@+id/their_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@+id/their_email"
-                android:layout_below="@+id/their_full_name"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"
-                android:paddingBottom="10dp"
+                android:layout_toRightOf="@+id/your_full_name"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="jane_doe@gmail.com"
+                android:layout_alignParentRight="true"
+                android:gravity="right"
                 style="@android:style/TextAppearance.Holo.Small"/>
 
         <TextView
                 android:id="@+id/their_short_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@+id/their_short_id"
+                android:text="9062 865A 46E8 C749 2BF1 88D7 1426 C7DC 3F51 E16F"
                 android:layout_below="@+id/their_full_name"
-                android:layout_toRightOf="@+id/their_email"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
                 android:layout_alignParentRight="true"
-                style="@android:style/TextAppearance.Holo.Small" android:gravity="right"/>
+                style="@android:style/TextAppearance.Holo.Small" android:gravity="right"
+                android:layout_marginBottom="10dp"/>
 
     </RelativeLayout>
 
@@ -159,5 +144,6 @@
             android:layout_width="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
+            android:layout_alignParentBottom="true"
             android:text="Verify"/>
 </LinearLayout>
