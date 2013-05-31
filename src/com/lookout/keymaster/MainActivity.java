@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -167,7 +168,7 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
         }
 */
         protected void onPostExecute(Void result) {
-            loadKeyFragment(true);
+            //loadKeyFragment(true);
         }
 
     }
@@ -179,8 +180,8 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
     @Override
     public NdefMessage createNdefMessage(NfcEvent event){
         NdefMessage msg = new NdefMessage(
-                NdefRecord.createMime("application/vnd.com.lookout.keymaster", GPGFactory.getPublicKey().getBytes()),
-                NdefRecord.createMime("application/vnd.com.lookout.keymaster", GPGFactory.getSignedKey().getBytes()));
+                NdefRecord.createMime("application/vnd.com.lookout.keymaster.beam", GPGFactory.getPublicKey().getBytes()),
+                NdefRecord.createMime("application/vnd.com.lookout.keymaster.beam", GPGFactory.getSignedKey().getBytes()));
 
         /**
          * The Android Application Record (AAR) is commented out. When a device
@@ -205,8 +206,6 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
         }
     }
 
-
-
     void processIntent(Intent intent){
         Parcelable[] rawMsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
 
@@ -216,6 +215,8 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
         // record 0 contains the MIME type, record 1 is the AAR, if present
         String messageReceived = new String(msg.getRecords()[0].getPayload());
         String messageReceived2 = new String(msg.getRecords()[1].getPayload());
+
+        Log.i("KeyMaster", "receivedmsg" + messageReceived);
 
         GPGFactory.setReceivedKey(messageReceived);
 

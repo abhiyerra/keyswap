@@ -1,6 +1,7 @@
 package com.lookout.keymaster.fragments;
 
 import android.app.Fragment;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,9 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import com.lookout.keymaster.gpg.GPGFactory;
 import com.lookout.keymaster.R;
+import com.lookout.keymaster.gpg.KeyringSyncManager;
+
+import java.util.Map;
 
 public class ExchangeFragment extends Fragment {
 
@@ -28,15 +32,40 @@ public class ExchangeFragment extends Fragment {
 
         GPGFactory.buildData();
 
-        ListView lv = (ListView) rootView.findViewById(R.id.keyToShare);
-        String[] from = { "full_name", "key_id" };
-        int[] to = { R.id.full_name, R.id.short_id };
+        final ListView lv = (ListView) rootView.findViewById(R.id.keyToShare);
+        String[] from = { "full_name", "key_id", "", "" };
+        int[] to = { R.id.full_name, R.id.short_id, R.id.email, R.id.created };
         adapter = new SimpleAdapter(rootView.getContext(), GPGFactory.getKeys(), R.layout.key_list_item, from, to);
         lv.setAdapter(adapter);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                lv.getItemAtPosition(i);
+                Map<String, String> keyAtPosition = GPGFactory.getKeys().get(i);
+                String pgp_key_id = keyAtPosition.get("key_id");
+
+                new SelectKeyTask(pgp_key_id).execute();
+            }
+        });
 
         getActivity().setTitle("Key Exchange");
 
         return rootView;
+    }
+
+    private class SelectKeyTask extends AsyncTask<Void, Void, Void> {
+        String keyId;
+
+        public SelectKeyTask(String keyId)  {
+            this.keyId = keyId;
+        }
+
+        protected Void doInBackground(Void... voids) {
+            GPGFactory.setPublicKey(keyId);
+
+            return null;
+        }
     }
 
 

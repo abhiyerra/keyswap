@@ -1,11 +1,16 @@
 package com.lookout.keymaster.gpg;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class GPGFactory {
     public static ArrayList<Map<String, String>> keys;
+
+    public static String publicKey, publicKeyId;
+
 
     public static String receivedKey;
 
@@ -45,9 +50,21 @@ public class GPGFactory {
 
     }
 
-    public static String getPublicKey() {
-        return "This is a public key";
+    public static void setPublicKey(String pgp_key_id) {
+        publicKeyId = pgp_key_id;
+        publicKey = GPGCli.getInstance().keyAsAsciiArmor(publicKeyId);
+
+        Log.i("KeyMaster", publicKey);
     }
+
+    public static String getPublicKey() {
+        if(publicKey == null) {
+            return publicKey;
+        } else {
+            return "";
+        }
+    }
+
     public static String getSignedKey() {
         return "This is a signed key";
     }
