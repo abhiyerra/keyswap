@@ -183,6 +183,7 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
     public NdefMessage createNdefMessage(NfcEvent event){
         NdefMessage msg = new NdefMessage(
                 NdefRecord.createMime("application/vnd.com.lookout.keymaster.beam", GPGFactory.getPublicKey().getBytes()),
+                NdefRecord.createMime("application/vnd.com.lookout.keymaster.beam", GPGFactory.getPublicKeyId().getBytes()),
                 //NdefRecord.createMime("application/vnd.com.lookout.keymaster.beam", GPGFactory.getSignedKey().getBytes()),
                 NdefRecord.createApplicationRecord("com.lookout.keymaster"));
 
@@ -208,13 +209,33 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
         NdefMessage msg = (NdefMessage) rawMsgs[0];
 
         // record 0 contains the MIME type, record 1 is the AAR, if present
-        String messageReceived = new String(msg.getRecords()[0].getPayload());
-        //String messageReceived2 = new String(msg.getRecords()[1].getPayload());
+        String receivedKey = new String(msg.getRecords()[0].getPayload());
+        String receivedKeyId = new String(msg.getRecords()[1].getPayload());
 
-        Log.i("KeyMaster", "receivedmsg" + messageReceived);
+        Log.i("KeyMaster", "receivedmsg" + receivedKey);
 
-        GPGFactory.setReceivedKey(messageReceived);
+        new AddKeyToKeychainTask(receivedKey, receivedKeyId).execute();
+    }
 
-        loadKeyVerifyFragment(messageReceived);
+    private class AddKeyToKeychainTask extends AsyncTask<Void, Void, Void> {
+        String keyArmor, keyId;
+
+        public AddKeyToKeychainTask(String keyArmor, String keyId)  {
+            this.keyArmor = keyArmor;
+            this.keyId = keyId;
+        }
+
+        protected Void doInBackground(Void... voids) {
+            GPGFactory.setReceivedKey(keyArmor, keyId);
+
+            return null;
+        }
+
+        protected void onPostExecute(Void result) {
+            loadKeyVerifyFragment(null);
+        }
+
+
+
     }
 }

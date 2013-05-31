@@ -92,7 +92,7 @@ public class GPGCli implements GPGBinding {
         return keys;
     }
 
-    public void changeOwnerTrust(String fingerprint, GPGRecord.TrustLevel trustLevel) {
+    public void signKey(String fingerprint, TrustLevel trustLevel) {
         int gpgTrustLevel = 1;
         switch(trustLevel) {
             case New:
@@ -144,17 +144,30 @@ public class GPGCli implements GPGBinding {
         Log.i("LookoutPG", source + " imported");
     }
 
-    public String keyAsAsciiArmor(String keyId) {
+    public void pushToKeyServer(String server, String keyId) {
+        Exec(GPG_PATH, "--yes", "--key-server", server, "--send-key", keyId);
+
+        Log.i("LookoutPG", keyId + " pushed to " + server);
+    }
+
+    public String exportAsciiArmoredKey(String keyId) {
         String output = Exec(GPG_PATH, "--armor", "--export", keyId);
         Log.i("LookoutPG", keyId + " exported");
 
         return output;
     }
 
-    public void pushToKeyServer(String server, String keyId) {
-        Exec(GPG_PATH, "--yes", "--key-server", server, "--send-key", keyId);
+    public void importAsciiArmoredKey(String armoredKey) {
+        try {
+            String tempPath = "/sdcard/Keymaster/tempArmoredKey.asc";
+            PrintWriter printWriter = new PrintWriter(tempPath);
+            printWriter.print(armoredKey);
+            printWriter.close();
 
-        Log.i("LookoutPG", keyId + " pushed to " + server);
+            Exec(GPG_PATH, "--yes", "--import", tempPath);
+            new File(tempPath).delete();
+        } catch(Exception e) {
+        }
     }
 
     private String Exec(String... command) {
