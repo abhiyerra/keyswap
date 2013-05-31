@@ -11,10 +11,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import com.lookout.keymaster.gpg.GPGFactory;
 import com.lookout.keymaster.R;
-import com.lookout.keymaster.gpg.KeyringSyncManager;
 
 import java.util.Map;
 
@@ -33,7 +31,7 @@ public class ExchangeFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_exchange, container, false);
 
-        GPGFactory.buildData();
+        GPGFactory.buildKeyPairList();
 
         final ListView lv = (ListView) rootView.findViewById(R.id.keyToShare);
         String[] from = { "full_name", "short_id", "email" };

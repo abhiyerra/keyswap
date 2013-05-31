@@ -17,7 +17,7 @@ public class GPGFactory {
         return keys;
     }
 
-    public static void buildData() {
+    public static void buildKeyPairList() {
         keys = new ArrayList<Map<String, String>>();
         ArrayList<GPGKeyPair> keyPairs = GPGCli.getInstance().getKeyPairs();
 
@@ -26,6 +26,28 @@ public class GPGFactory {
             keys.add(putData(key.getPrimaryKeyId().getPersonalName(),
                              key.getPrimaryKeyId().getEmail(),
                              key.getShortId()));
+        }
+    }
+
+    public static void buildPublicKeyList() {
+        keys = new ArrayList<Map<String, String>>();
+        ArrayList<GPGKey> publicKeys = GPGCli.getInstance().getPublicKeys();
+
+        for(GPGKey key : publicKeys) {
+            keys.add(putData(key.getPrimaryKeyId().getPersonalName(),
+                             key.getPrimaryKeyId().getEmail(),
+                             key.getShortId()));
+        }
+    }
+
+    public static void buildPrivateKeyList() {
+        keys = new ArrayList<Map<String, String>>();
+        ArrayList<GPGKey> privateKeys = GPGCli.getInstance().getSecretKeys();
+
+        for(GPGKey key : privateKeys) {
+            keys.add(putData(key.getPrimaryKeyId().getPersonalName(),
+                    key.getPrimaryKeyId().getEmail(),
+                    key.getShortId()));
         }
     }
 
@@ -60,7 +82,7 @@ public class GPGFactory {
         receivedKey = key;
         receivedKeyId = key_id;
         GPGCli.getInstance().importAsciiArmoredKey(key);
-        buildData();
+        buildKeyPairList();
     }
 
     public static String getReceivedKey() {

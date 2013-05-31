@@ -10,17 +10,10 @@ import android.widget.SimpleAdapter;
 import com.lookout.keymaster.gpg.GPGFactory;
 import com.lookout.keymaster.R;
 
-/**
- * Created with IntelliJ IDEA.
- * User: ayerra
- * Date: 5/29/13
- * Time: 10:25 PM
- * To change this template use File | Settings | File Templates.
- */
-public class KeyFragment extends Fragment {
+public class PublicKeysFragment extends Fragment {
     SimpleAdapter adapter;
 
-    public KeyFragment() {
+    public PublicKeysFragment() {
         // Empty constructor required for fragment subclasses
     }
 
@@ -30,7 +23,7 @@ public class KeyFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_key, container, false);
 
-        GPGFactory.buildData();
+        GPGFactory.buildPublicKeyList();
 
         ListView lv = (ListView) rootView.findViewById(R.id.keyView);
         String[] from = { "full_name", "short_id", "email" };
