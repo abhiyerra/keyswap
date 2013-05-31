@@ -25,4 +25,13 @@
     <string name="exchange_keyserver_prompt">Push to keyserver?</string>
     <string name="exchange_keyserver_warning">Remember, not everyone prefers to have their public key listed on keyservers - so don\'t perform this step without explicit permission from your new contact.</string>
 
+    <string name="keyserver_name">Keyserver</string>
+    <string-array name="keyserver_domains">
+      <item>sks-keyservers.net</item>
+      <item>pgp.mit.edu</item>
+      <item>pgpkeys.pca.dfn.de</item>
+      <item>keyserver.linux.it</item>
+      <item>pgp.uni-mainz.de</item>
+      <item>minsky.surfnet.nl</item>
+    </string-array>
 </resources>
