@@ -114,10 +114,7 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
 
 
     private void loadKeyVerifyFragment(String receivedKey) {
-        Fragment fragment = new KeyVerifyFragment();
-        Bundle args = new Bundle();
-        args.putString("ReceivedKey", receivedKey);
-        fragment.setArguments(args);
+        fragment = new KeyVerifyFragment();
 
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "key_verify").commit();
@@ -219,8 +216,6 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
         Log.i("KeyMaster", "receivedmsg" + messageReceived);
 
         GPGFactory.setReceivedKey(messageReceived);
-
-        Toast.makeText(this.getApplicationContext(), messageReceived2, Toast.LENGTH_LONG).show();
 
         loadKeyVerifyFragment(messageReceived);
     }
