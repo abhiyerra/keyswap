@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.util.Log;
 
 import java.io.File;
-import java.util.ArrayList;
 
 public class KeyringSyncManager {
 
@@ -32,17 +31,17 @@ public class KeyringSyncManager {
     }
 
     public void sync(Context context) {
-        this.importPublicKeyring();
-        this.exportPublicKeyring();
+        this.importKeys();
+        this.exportKeyring();
 
         context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + storagePath)));
     }
 
-    public void exportPublicKeyring() {
+    public void exportKeyring() {
         GPGCli.getInstance().exportKeyring(new File(storagePath, "/Keyring.gpg").getAbsolutePath());
     }
 
-    public void importPublicKeyring() {
+    public void importKeys() {
         for(File file : new File(storagePath).listFiles()) {
             if(file.getName().equals("Keyring.gpg")) {
                 continue;

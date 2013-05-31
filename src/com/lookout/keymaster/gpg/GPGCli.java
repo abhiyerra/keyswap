@@ -61,7 +61,7 @@ public class GPGCli implements GPGBinding {
 
     public ArrayList<GPGKey> getPublicKeys() {
         String rawList = Exec(GPG_PATH, "--with-colons", "--with-fingerprint", "--list-keys");
-        Log.i("LookoutPG", "Got public keys");
+        Log.i("LookoutPG", "Got public keys: " + rawList);
 
         ArrayList<GPGKey> keys = new ArrayList<GPGKey>();
         Scanner scanner = new Scanner(rawList);
@@ -76,7 +76,7 @@ public class GPGCli implements GPGBinding {
 
     public ArrayList<GPGKey> getSecretKeys() {
         String rawList = Exec(GPG_PATH, "--with-colons", "--with-fingerprint", "--list-secret-keys");
-        Log.i("LookoutPG", "Got secret keys");
+        Log.i("LookoutPG", "Got secret keys: " + rawList);
 
         ArrayList<GPGKey> keys = new ArrayList<GPGKey>();
         Scanner scanner = new Scanner(rawList);
@@ -96,6 +96,7 @@ public class GPGCli implements GPGBinding {
         for(GPGKey secretKey : secretKeys) {
             GPGKey publicKey = this.getPublicKey(secretKey.getKeyId());
             GPGKeyPair keyPair = new GPGKeyPair(publicKey, secretKey);
+            keyPairs.add(keyPair);
         }
 
         return keyPairs;
@@ -167,20 +168,20 @@ public class GPGCli implements GPGBinding {
     }
 
     public void exportKeyring(String destination) {
-        Exec(GPG_PATH, "--yes", "--output", destination, "--export");
+        String output = Exec(GPG_PATH, "--yes", "--output", destination, "--export-secret-keys");
 
         Log.i("LookoutPG", "Keyring exported");
     }
 
     public void exportKey(String destination, String keyId) {
         String outputPath = new File(destination, keyId + ".gpg").getAbsolutePath();
-        Exec(GPG_PATH, "--yes", "--output", outputPath, "--export", keyId);
+        Exec(GPG_PATH, "--yes", "--output", outputPath, "--export-secret-keys", keyId);
 
         Log.i("LookoutPG", keyId + " exported to " + outputPath);
     }
 
     public void importKey(String source) {
-        Exec(GPG_PATH, "--yes", "--import", source);
+        Exec(GPG_PATH, "--yes", "--allow-secret-key-import", "--import", source);
 
         Log.i("LookoutPG", source + " imported");
     }
@@ -218,9 +219,9 @@ public class GPGCli implements GPGBinding {
             p.waitFor();
             rawOutput = getProcessOutput(p);
         } catch(IOException e) {
-
+            Log.e("Keymaster", e.getMessage());
         } catch (InterruptedException e) {
-
+            Log.e("Keymaster", e.getMessage());
         }
         return rawOutput;
     }
