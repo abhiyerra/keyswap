@@ -23,19 +23,35 @@
             android:layout_width="fill_parent"
             android:layout_height="1dp"
             android:layout_below="@+id/exchangeReturnPrompt"
-            android:background="@android:color/darker_gray"/>
+            android:background="@android:color/darker_gray" >
+    </View>
 
-    <TextView
-            android:id="@+id/exchangeKeyserverWarning"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left|center_vertical" android:layout_row="0"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
-            android:text="@string/exchange_keyserver_warning"
-            android:layout_alignParentTop="true">
-    </TextView>
+    <LinearLayout
+        android:id="@+id/alertPrompt"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:gravity="center_vertical" android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
+
+        <ImageView
+                android:id="@+id/alertIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_alert">
+        </ImageView>
+
+        <TextView
+                android:id="@+id/exchangeKeyserverWarning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical" android:layout_row="0"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/exchange_keyserver_warning"
+                android:layout_alignParentTop="true">
+        </TextView>
+
+    </LinearLayout>
 
     <RelativeLayout
             android:id="@+id/sendSignedBox"

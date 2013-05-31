@@ -97,8 +97,8 @@
 
     <Button
             android:id="@+id/sign_key_button"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            style="@android:style/Holo.Light.ButtonBar"
             android:text="Sign"/>
 </LinearLayout>
