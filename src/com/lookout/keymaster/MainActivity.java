@@ -80,47 +80,8 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
 
     }
 
-    private void loadHomeFragment() {
-        fragment = new HomeFragment();
-        Bundle args = new Bundle();
-        //args.putInt(KeyFragment.ARG_PLANET_NUMBER, position);
-        fragment.setArguments(args);
-
-        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "home").commit();
-    }
-
-    private void loadExchangeFragment() {
-        fragment = new ExchangeFragment();
-        Bundle args = new Bundle();
-        //args.putInt(KeyFragment.ARG_PLANET_NUMBER, position);
-        fragment.setArguments(args);
-
-        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "exchange").commit();
-    }
-
-    private void loadKeyFragment(boolean forPublicKeys) {
-        fragment = new KeyFragment();
-        Bundle args = new Bundle();
-        args.putBoolean("ForPublicKeys", forPublicKeys);
-        fragment.setArguments(args);
-
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "key").commit();
-    }
-
-
-    private void loadKeyVerifyFragment() {
-        fragment = new KeyVerifyFragment();
-
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "key_verify").commit();
-    }
-
-    private void loadExchangeReadyFragment() {
-        fragment = new ExchangeReadyFragment();
-
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "exchange_ready").commit();
+    private void loadFragment(Fragment fragment) {
+        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
     }
 
     /* The click listner for ListView in the navigation drawer */
@@ -129,20 +90,25 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             switch(position) {
                 case 0:
-                    loadHomeFragment();
+                    loadFragment(new HomeFragment());
                     break;
                 case 1:
-                    loadExchangeFragment();
+                    loadFragment(new ExchangeFragment());
                     break;
                 case 2:
                     new KeyringSyncTask().execute();
                     break;
                 case 3:
-                    loadKeyFragment(true);
+                    loadFragment(new KeyFragment());
                     break;
                 case 4:
-                    loadKeyFragment(false);
+                    loadFragment(new KeyFragment());
                     break;
+                case 5:       // Only for TESTING.
+                    loadFragment(new KeyVerifyFragment());
+                    break;
+                case 6:
+                    loadFragment(new ServerPushFragment());
             }
 
 
@@ -235,7 +201,7 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
         }
 
         protected void onPostExecute(Void result) {
-            loadKeyVerifyFragment();
+            loadFragment(new KeyVerifyFragment());
         }
     }
 }
