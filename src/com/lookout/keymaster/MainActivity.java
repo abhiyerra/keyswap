@@ -191,7 +191,7 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
         protected Void doInBackground(Void... voids) {
             GPGFactory.setReceivedKey(keyArmor, keyId);
             GPGCli.getInstance().importAsciiArmoredKey(this.signedKey);
-            GPGFactory.buildData();
+            GPGFactory.buildKeyPairList();
 
             return null;
         }
