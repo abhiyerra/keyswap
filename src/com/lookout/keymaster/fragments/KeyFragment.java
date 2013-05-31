@@ -33,8 +33,8 @@ public class KeyFragment extends Fragment {
         GPGFactory.buildData();
 
         ListView lv = (ListView) rootView.findViewById(R.id.keyView);
-        String[] from = { "full_name", "key_id" };
-        int[] to = { R.id.full_name, R.id.short_id };
+        String[] from = { "full_name", "short_id", "email" };
+        int[] to = { R.id.full_name, R.id.short_id, R.id.email };
         adapter = new SimpleAdapter(rootView.getContext(), GPGFactory.getKeys(), R.layout.key_list_item, from, to);
         lv.setAdapter(adapter);
 
