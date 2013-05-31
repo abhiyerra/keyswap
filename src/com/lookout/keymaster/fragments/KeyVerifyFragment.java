@@ -77,12 +77,12 @@ public class KeyVerifyFragment extends Fragment {
         }
 
         protected void onPostExecute(GPGKey[] result) {
-            setTextForId(R.id.your_email, result[1].getPrimaryKeyId().getUserId());
-            setTextForId(R.id.your_full_name, result[1].getPrimaryKeyId().getCreationDate());
+            setTextForId(R.id.your_email, result[1].getPrimaryKeyId().getEmail());
+            setTextForId(R.id.your_full_name, result[1].getPrimaryKeyId().getPersonalName());
             setTextForId(R.id.your_fingerprint, result[1].getFormattedFingerprint());
 
-            setTextForId(R.id.their_email, result[0].getPrimaryKeyId().getUserId());
-            setTextForId(R.id.their_full_name, result[0].getPrimaryKeyId().getCreationDate());
+            setTextForId(R.id.their_email, result[0].getPrimaryKeyId().getEmail());
+            setTextForId(R.id.their_full_name, result[0].getPrimaryKeyId().getPersonalName());
             setTextForId(R.id.their_fingerprint, result[0].getFormattedFingerprint());
         }
     }
