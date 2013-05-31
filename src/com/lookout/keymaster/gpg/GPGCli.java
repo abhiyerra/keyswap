@@ -1,9 +1,12 @@
 package com.lookout.keymaster.gpg;
 
+import android.os.Environment;
 import android.util.Log;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -11,7 +14,7 @@ public class GPGCli implements GPGBinding {
 
     private static GPGCli instance;
 
-    private final String GPG_PATH = "/data/data/info.guardianproject.gpg/app_opt/aliases/gpg2";
+    private final String GPG_PATH = "gpg2";
 
     public static GPGCli getInstance() {
         if(instance == null) {
@@ -21,36 +24,23 @@ public class GPGCli implements GPGBinding {
     }
 
     private GPGCli() {
-        Log.i("LookoutPG", "GPGCli initialized");
+        Log.i("Keymaster", "GPGCli initialized");
     }
 
     public GPGKey getPublicKey(String keyId) {
-        /*String rawList = Exec(GPG_PATH, "--with-colons", "--with-fingerprint", "--list-keys", keyId);
-        Log.i("LookoutPG", "Got public key: " + keyId);
+        String rawList = Exec(GPG_PATH, "--with-colons", "--with-fingerprint", "--list-keys", keyId);
+        Log.i("Keymaster", "Got public key: " + keyId);
 
         Scanner scanner = new Scanner(rawList);
         GPGKey key = parseKey(scanner, "pub:.*");
         scanner.close();
-        */
 
-        Log.i("LookoutPG", "Got public key: " + keyId);
-
-        for(GPGKey k : getPublicKeys()) {
-            Log.i("LookoutPG", "keyId " + k.getKeyId());
-
-            if(k.getKeyId().equalsIgnoreCase(keyId)) {
-                Log.i("LookoutPG", "keyId found " + k.getKeyId());
-                return k;
-
-            }
-        }
-
-        return null;
+        return key;
     }
 
     public GPGKey getSecretKey(String keyId) {
         String rawList = Exec(GPG_PATH, "--with-colons", "--with-fingerprint", "--list-secret-keys", keyId);
-        Log.i("LookoutPG", "Got secret key: " + keyId);
+        Log.i("Keymaster", "Got secret key: " + keyId);
 
         Scanner scanner = new Scanner(rawList);
         GPGKey key = parseKey(scanner, "sec:.*");
@@ -61,7 +51,7 @@ public class GPGCli implements GPGBinding {
 
     public ArrayList<GPGKey> getPublicKeys() {
         String rawList = Exec(GPG_PATH, "--with-colons", "--with-fingerprint", "--list-keys");
-        Log.i("LookoutPG", "Got public keys");
+        Log.i("Keymaster", "Got public keys: " + rawList);
 
         ArrayList<GPGKey> keys = new ArrayList<GPGKey>();
         Scanner scanner = new Scanner(rawList);
@@ -76,7 +66,7 @@ public class GPGCli implements GPGBinding {
 
     public ArrayList<GPGKey> getSecretKeys() {
         String rawList = Exec(GPG_PATH, "--with-colons", "--with-fingerprint", "--list-secret-keys");
-        Log.i("LookoutPG", "Got secret keys");
+        Log.i("Keymaster", "Got secret keys: " + rawList);
 
         ArrayList<GPGKey> keys = new ArrayList<GPGKey>();
         Scanner scanner = new Scanner(rawList);
@@ -96,6 +86,7 @@ public class GPGCli implements GPGBinding {
         for(GPGKey secretKey : secretKeys) {
             GPGKey publicKey = this.getPublicKey(secretKey.getKeyId());
             GPGKeyPair keyPair = new GPGKeyPair(publicKey, secretKey);
+            keyPairs.add(keyPair);
         }
 
         return keyPairs;
@@ -167,33 +158,33 @@ public class GPGCli implements GPGBinding {
     }
 
     public void exportKeyring(String destination) {
-        Exec(GPG_PATH, "--yes", "--output", destination, "--export");
+        String output = Exec(GPG_PATH, "--yes", "--output", destination, "--export-secret-keys");
 
-        Log.i("LookoutPG", "Keyring exported");
+        Log.i("Keymaster", "Keyring exported");
     }
 
     public void exportKey(String destination, String keyId) {
         String outputPath = new File(destination, keyId + ".gpg").getAbsolutePath();
-        Exec(GPG_PATH, "--yes", "--output", outputPath, "--export", keyId);
+        Exec(GPG_PATH, "--yes", "--output", outputPath, "--export-secret-keys", keyId);
 
-        Log.i("LookoutPG", keyId + " exported to " + outputPath);
+        Log.i("Keymaster", keyId + " exported to " + outputPath);
     }
 
     public void importKey(String source) {
-        Exec(GPG_PATH, "--yes", "--import", source);
+        Exec(GPG_PATH, "--yes", "--allow-secret-key-import", "--import", source);
 
-        Log.i("LookoutPG", source + " imported");
+        Log.i("Keymaster", source + " imported");
     }
 
     public void pushToKeyServer(String server, String keyId) {
         Exec(GPG_PATH, "--yes", "--key-server", server, "--send-key", keyId);
 
-        Log.i("LookoutPG", keyId + " pushed to " + server);
+        Log.i("Keymaster", keyId + " pushed to " + server);
     }
 
     public String exportAsciiArmoredKey(String keyId) {
         String output = Exec(GPG_PATH, "--armor", "--export", keyId);
-        Log.i("LookoutPG", keyId + " exported");
+        Log.i("Keymaster", keyId + " exported");
 
         return output;
     }
@@ -214,13 +205,17 @@ public class GPGCli implements GPGBinding {
     private String Exec(String... command) {
         String rawOutput = "";
         try {
-            Process p = new ProcessBuilder(command).start();
+            ProcessBuilder pb = new ProcessBuilder(command);
+            Map<String, String> environment = pb.environment();
+            environment.put("PATH", environment.get("PATH") + ":/data/data/info.guardianproject.gpg/app_opt/aliases");
+            environment.put("LD_LIBRARY_PATH", environment.get("LD_LIBRARY_PATH") + ":/data/data/info.guardianproject.gpg/app_opt/lib:/data/data/info.guardianproject.gpg/lib");
+            Process p = pb.start();
             p.waitFor();
             rawOutput = getProcessOutput(p);
         } catch(IOException e) {
-
+            Log.e("Keymaster", e.getMessage());
         } catch (InterruptedException e) {
-
+            Log.e("Keymaster", e.getMessage());
         }
         return rawOutput;
     }
