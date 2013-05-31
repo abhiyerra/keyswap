@@ -41,4 +41,6 @@ public class KeyVerifyFragment extends Fragment {
         getActivity().setTitle("Key Exchange");
         return rootView;
     }
+
+
 }

@@ -12,7 +12,7 @@ public class GPGFactory {
     public static String publicKey, publicKeyId;
 
 
-    public static String receivedKey;
+    public static String receivedKey, receivedKeyId;
 
     public static ArrayList<Map<String, String>> getKeys() {
         return keys;
@@ -34,8 +34,16 @@ public class GPGFactory {
         return item;
     }
 
-    public static void setReceivedKey(String key) {
+
+    public static HashMap<String, String> getKeyByKeyId(String key_id) {
+
+        HashMap<String, String> new HashMap<String, String>();
+    }
+    public static void setReceivedKey(String key, String key_id) {
         receivedKey = key;
+        receivedKeyId = key_id;
+        GPGCli.getInstance().importKey(key);
+        buildData();
     }
 
     public static String getReceivedKey() {
@@ -44,6 +52,14 @@ public class GPGFactory {
         }
 
         return receivedKey;
+    }
+
+    public static String getReceivedKeyId() {
+        if(receivedKeyId == null) {
+            return "";
+        }
+
+        return receivedKeyId;
     }
 
     public static void signReceivedKey(String trustLevel) {
@@ -65,7 +81,16 @@ public class GPGFactory {
         }
     }
 
+    public static String getPublicKeyId() {
+        if(publicKeyId != null) {
+            return publicKeyId;
+        } else {
+            return "";
+        }
+    }
+
     public static String getSignedKey() {
         return "This is a signed key";
     }
+
 }
