@@ -38,12 +38,6 @@ public class KeyVerifyFragment extends Fragment {
         ).execute();
 
 
-        setTextForId(R.id.their_email, "");
-        setTextForId(R.id.their_full_name, "Abhi Yerra");
-        setTextForId(R.id.their_short_id, "1234");
-        setTextForId(R.id.their_created, "");
-
-
         Button verifyButton = (Button)rootView.findViewById(R.id.verify_key_button);
         verifyButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,13 +79,11 @@ public class KeyVerifyFragment extends Fragment {
         protected void onPostExecute(GPGKey[] result) {
             setTextForId(R.id.your_email, result[1].getPrimaryKeyId().getUserId());
             setTextForId(R.id.your_full_name, result[1].getPrimaryKeyId().getCreationDate());
-            setTextForId(R.id.your_short_id, yourkeyId);
-            setTextForId(R.id.your_created, "");
+            setTextForId(R.id.your_fingerprint, result[1].getFormattedFingerprint());
 
             setTextForId(R.id.their_email, result[0].getPrimaryKeyId().getUserId());
             setTextForId(R.id.their_full_name, result[0].getPrimaryKeyId().getCreationDate());
-            setTextForId(R.id.their_short_id, theirkeyId);
-            setTextForId(R.id.their_created, "");
+            setTextForId(R.id.their_fingerprint, result[0].getFormattedFingerprint());
         }
     }
 }
