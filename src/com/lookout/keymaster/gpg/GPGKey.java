@@ -59,11 +59,14 @@ public class GPGKey {
     public String getFormattedFingerprint() {
         String formatted = fingerprint.replaceAll("....(?=.)", "$0 ");
         String[] groups = formatted.split(" ");
+
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < groups.length; i++) {
             sb.append(groups[i]);
             if(i == 4) {
                 sb.append("\n");
+            } else if(i != 9) {
+                sb.append(" ");
             }
         }
 
