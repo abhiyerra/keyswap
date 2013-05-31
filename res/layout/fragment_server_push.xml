@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:id="@+id/keyExchange"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
@@ -9,7 +9,7 @@
             android:id="@+id/exchangeKeyserverPrompt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left|center_vertical" android:layout_row="0"
+            android:layout_gravity="left|center_vertical"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
@@ -18,19 +18,13 @@
             android:layout_alignParentTop="true">
     </TextView>
 
-    <View
-            android:id="@+id/divider"
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/exchangeReturnPrompt"
-            android:background="@android:color/darker_gray" >
-    </View>
-
     <LinearLayout
         android:id="@+id/alertPrompt"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" android:gravity="center_vertical" android:layout_marginBottom="20dp"
-        android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
+        android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
+        android:layout_below="@+id/exchangeKeyserverPrompt"
+        android:background="@drawable/box">
 
         <ImageView
                 android:id="@+id/alertIcon"
@@ -55,11 +49,12 @@
 
     <RelativeLayout
             android:id="@+id/sendSignedBox"
-            android:layout_below="@+id/yourKeyBoxHeader"
+            android:layout_below="@+id/alertPrompt"
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_marginRight="10dp"
-            android:layout_height="wrap_content" android:layout_gravity="left">
+            android:layout_height="wrap_content" android:layout_gravity="left"
+            >
 
         <Spinner
                 android:id="@+id/spinner1"
@@ -73,5 +68,5 @@
             android:id="@+id/sign_key_button"
             android:layout_height="60dp"
             android:layout_width="fill_parent"
-            android:text="Done" android:layout_gravity="bottom"/>
-</LinearLayout>
+            android:text="Sign" android:layout_alignParentBottom="true"/>
+</RelativeLayout>
