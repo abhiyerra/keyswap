@@ -3,6 +3,7 @@ package com.lookout.keymaster.fragments;
 import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,8 +39,9 @@ public class ExchangeReadyFragment extends Fragment {
         tv.setText(txt);
     }
 
+
     private class SendingKeyTask extends AsyncTask<Void, Void, GPGKey> {
-        String keyArmor, keyId;
+        String keyId;
 
         public SendingKeyTask(String keyId)  {
             this.keyId = keyId;
@@ -51,8 +53,8 @@ public class ExchangeReadyFragment extends Fragment {
 
         protected void onPostExecute(GPGKey result) {
             setTextForId(R.id.sending_short_id, keyId);
-            setTextForId(R.id.sending_created, result.getParentKey().getExpirationDate());
-            setTextForId(R.id.sending_full_name, result.getParentKey().getUserId());
+            setTextForId(R.id.sending_created, result.getPrimaryKeyId().getExpirationDate());
+            setTextForId(R.id.sending_full_name, result.getPrimaryKeyId().getUserId());
             setTextForId(R.id.sending_email, "");
         }
     }

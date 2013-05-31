@@ -25,14 +25,27 @@ public class GPGCli implements GPGBinding {
     }
 
     public GPGKey getPublicKey(String keyId) {
-        String rawList = Exec(GPG_PATH, "--with-colons", "--with-fingerprint", "--list-keys", keyId);
+        /*String rawList = Exec(GPG_PATH, "--with-colons", "--with-fingerprint", "--list-keys", keyId);
         Log.i("LookoutPG", "Got public key: " + keyId);
 
         Scanner scanner = new Scanner(rawList);
         GPGKey key = parseKey(scanner, "pub:.*");
         scanner.close();
+        */
 
-        return key;
+        Log.i("LookoutPG", "Got public key: " + keyId);
+
+        for(GPGKey k : getPublicKeys()) {
+            Log.i("LookoutPG", "keyId " + k.getKeyId());
+
+            if(k.getKeyId().equalsIgnoreCase(keyId)) {
+                Log.i("LookoutPG", "keyId found " + k.getKeyId());
+                return k;
+
+            }
+        }
+
+        return null;
     }
 
     public GPGKey getSecretKey(String keyId) {
