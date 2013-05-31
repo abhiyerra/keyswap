@@ -113,12 +113,13 @@ public class GPGCli implements GPGBinding {
 
         String trustDBRecord = fingerprint + ":" + gpgTrustLevel + ":";
         try {
-            PrintWriter printWriter = new PrintWriter("/sdcard/keymaster/tempTrustDb");
+            String tempPath = "/sdcard/Keymaster/tempTrustDb";
+            PrintWriter printWriter = new PrintWriter(tempPath);
             printWriter.print(trustDBRecord);
             printWriter.close();
 
-            Exec(GPG_PATH, "--import-ownertrust", "/sdcard/keymaster/tempTrustDb");
-            new File("/sdcard/keymaster/tempTrustDb").delete();
+            Exec(GPG_PATH, "--import-ownertrust", tempPath);
+            new File(tempPath).delete();
         } catch(Exception e) {
         }
 
