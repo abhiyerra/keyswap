@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class KeyringSyncManager {
 
     private static KeyringSyncManager instance;
-    private static final String KEY_STORE_DIRECTORY = "/sdcard/LookoutPG/";
+    private static final String KEY_STORE_DIRECTORY = "/sdcard/Keymaster/";
 
     private String storagePath;
 
