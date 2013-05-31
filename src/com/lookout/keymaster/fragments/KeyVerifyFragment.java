@@ -30,10 +30,13 @@ public class KeyVerifyFragment extends Fragment {
 
         rootView = inflater.inflate(R.layout.fragment_key_verify, container, false);
 
-        setTextForId(R.id.your_email, "");
-        setTextForId(R.id.your_full_name, "");
-        setTextForId(R.id.your_short_id, "1234");
-        setTextForId(R.id.your_created, "");
+        new SetReceivingKeyTask(
+                GPGFactory.getReceivedKey(),
+                GPGFactory.getReceivedKeyId(),
+                GPGFactory.getPublicKey(),
+                GPGFactory.getPublicKeyId()
+        ).execute();
+
 
         setTextForId(R.id.their_email, "");
         setTextForId(R.id.their_full_name, "Abhi Yerra");
@@ -61,22 +64,34 @@ public class KeyVerifyFragment extends Fragment {
     }
 
 
-    private class SendingKeyTask extends AsyncTask<Void, Void, GPGKey> {
-        String keyId;
+    private class SetReceivingKeyTask extends AsyncTask<Void, Void, GPGKey[]> {
+        String theirKey, theirkeyId, yourkeyId, yourKey;
 
-        public SendingKeyTask(String keyId)  {
-            this.keyId = keyId;
+        public SetReceivingKeyTask(String theirKey, String theirKeyId, String yourKey, String yourKeyId)  {
+            this.theirKey = theirKey;
+            this.theirkeyId = theirKeyId;
+
+            this.yourKey = yourKey;
+            this.yourkeyId = yourKeyId;
         }
 
-        protected GPGKey doInBackground(Void... voids) {
-            return GPGCli.getInstance().getPublicKey(keyId);
+        protected GPGKey[] doInBackground(Void... voids) {
+            return new GPGKey[] {
+                    GPGCli.getInstance().getPublicKey(theirkeyId),
+                    GPGCli.getInstance().getPublicKey(yourkeyId)
+            };
         }
 
-        protected void onPostExecute(GPGKey result) {
-            setTextForId(R.id.sending_short_id, keyId);
-            setTextForId(R.id.sending_created, result.getPrimaryKeyId().getCreationDate());
-            setTextForId(R.id.sending_full_name, result.getPrimaryKeyId().getUserId());
-            setTextForId(R.id.sending_email, "");
+        protected void onPostExecute(GPGKey[] result) {
+            setTextForId(R.id.your_email, result[1].getPrimaryKeyId().getUserId());
+            setTextForId(R.id.your_full_name, result[1].getPrimaryKeyId().getCreationDate());
+            setTextForId(R.id.your_short_id, yourkeyId);
+            setTextForId(R.id.your_created, "");
+
+            setTextForId(R.id.their_email, result[0].getPrimaryKeyId().getUserId());
+            setTextForId(R.id.their_full_name, result[0].getPrimaryKeyId().getCreationDate());
+            setTextForId(R.id.their_short_id, theirkeyId);
+            setTextForId(R.id.their_created, "");
         }
     }
 }

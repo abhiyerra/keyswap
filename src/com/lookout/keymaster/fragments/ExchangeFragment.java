@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +65,7 @@ public class ExchangeFragment extends Fragment {
         }
 
         protected Void doInBackground(Void... voids) {
+            Log.i("LookoutPG", "Setting key to " + keyId);
             GPGFactory.setPublicKey(keyId);
 
             return null;

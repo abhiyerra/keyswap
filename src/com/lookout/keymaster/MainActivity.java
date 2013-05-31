@@ -139,8 +139,6 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
 
     }
 
-
-
     @Override
     public void onNewIntent(Intent intent){
         // onResume gets called after this to handle the intent
@@ -155,8 +153,6 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
                 NdefRecord.createMime("application/vnd.com.lookout.keymaster.beam", GPGFactory.getPublicKeyId().getBytes()),
                 //NdefRecord.createMime("application/vnd.com.lookout.keymaster.beam", GPGFactory.getSignedKey().getBytes()),
                 NdefRecord.createApplicationRecord("com.lookout.keymaster"));
-
-
 
         return msg;
     }
@@ -196,6 +192,7 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
 
         protected Void doInBackground(Void... voids) {
             GPGFactory.setReceivedKey(keyArmor, keyId);
+            GPGFactory.buildData();
 
             return null;
         }
