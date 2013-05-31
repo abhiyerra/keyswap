@@ -5,7 +5,8 @@
     <string name="exchange_select_prompt">Select a keypair for this exchange:</string>
     <string name="exchange_select_default">Use by default for future key exchanges.</string>
     <string name="exchange_select_none">No Public Key Selected</string>
-    <string name="exchange_sync_prompt">Ready to exchange.</string>
+    <string name="exchange_sync_prompt">Ready to exchange:</string>
+    <string name="exchange_sync_tap_prompt">Bring your phones together to start the exchange:</string>
     <string name="exchange_sync_none">No device detected.</string>
     <string name="exchange_verify_prompt">Ready to verify!</string>
     <string name="exchange_verify_you">Your key:</string>

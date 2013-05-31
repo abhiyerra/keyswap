@@ -53,7 +53,6 @@ public class ExchangeReadyFragment extends Fragment {
 
         protected void onPostExecute(GPGKey result) {
             setTextForId(R.id.sending_short_id, keyId);
-            setTextForId(R.id.sending_created, result.getPrimaryKeyId().getCreationDate());
             setTextForId(R.id.sending_full_name, result.getPrimaryKeyId().getUserId());
             setTextForId(R.id.sending_email, "");
         }
