@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import com.lookout.keymaster.gpg.GPGFactory;
 import com.lookout.keymaster.R;
 import com.lookout.keymaster.gpg.KeyringSyncManager;
@@ -50,7 +51,10 @@ public class ExchangeFragment extends Fragment {
             }
         });
 
-        getActivity().setTitle("Key Exchange");
+        final TextView tv = (TextView) rootView.findViewById(R.id.exchangePrompt);
+        tv.setText(R.string.exchange_select_prompt);
+
+        getActivity().setTitle(R.string.exchange);
 
         return rootView;
     }
