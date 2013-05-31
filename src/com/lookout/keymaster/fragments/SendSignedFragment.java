@@ -61,7 +61,6 @@ public class SendSignedFragment extends Fragment {
 
         protected void onPostExecute(GPGKey result) {
             setTextForId(R.id.signed_short_id, keyId);
-            setTextForId(R.id.signed_created, result.getPrimaryKeyId().getCreationDate());
             setTextForId(R.id.signed_full_name, result.getPrimaryKeyId().getUserId());
             setTextForId(R.id.signed_email, "");
         }
