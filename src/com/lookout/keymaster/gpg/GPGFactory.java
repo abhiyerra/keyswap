@@ -10,8 +10,6 @@ public class GPGFactory {
     public static ArrayList<Map<String, String>> keys;
 
     public static String publicKey, publicKeyId;
-
-
     public static String receivedKey, receivedKeyId;
 
     public static ArrayList<Map<String, String>> getKeys() {
@@ -41,10 +39,11 @@ public class GPGFactory {
 
         return x;
     }
+
     public static void setReceivedKey(String key, String key_id) {
         receivedKey = key;
         receivedKeyId = key_id;
-        GPGCli.getInstance().importKey(key);
+        GPGCli.getInstance().importAsciiArmoredKey(key);
         buildData();
     }
 
