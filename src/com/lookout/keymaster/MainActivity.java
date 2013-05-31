@@ -63,7 +63,6 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
     }
 
 
-
     private void setupSidebar() {
         lv2 = (ListView) findViewById(R.id.left_drawer);
         String[] values = new String[] {
@@ -110,7 +109,7 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
     }
 
 
-    private void loadKeyVerifyFragment(String receivedKey) {
+    private void loadKeyVerifyFragment() {
         fragment = new KeyVerifyFragment();
 
         FragmentManager fragmentManager = getFragmentManager();
@@ -236,10 +235,7 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
         }
 
         protected void onPostExecute(Void result) {
-            loadKeyVerifyFragment(null);
+            loadKeyVerifyFragment();
         }
-
-
-
     }
 }

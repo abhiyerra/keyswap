@@ -1,53 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/public_key_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/keyExchange"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical">
 
     <TextView
-            android:id="@+id/sending_full_name"
+            android:id="@+id/exchangeSyncPrompt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@+id/sending_full_name"
             android:layout_gravity="left|center_vertical" android:layout_row="0"
-            android:layout_column="0"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
-            style="@android:style/TextAppearance.Medium"/>/>
+            android:layout_marginBottom="10dp"
+            android:text="@string/exchange_sync_prompt"
+            style="@android:style/TextAppearance.Holo.Large"
+            android:layout_alignParentTop="true">
+    </TextView>
 
-    <TextView
-            android:id="@+id/sending_created"
+    <View
+            android:id="@+id/divider"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/exchangeSyncPrompt"
+            android:background="@android:color/darker_gray"/>
+
+    <RelativeLayout
+            android:id="@+id/sendSignedBox"
+            android:layout_below="@+id/yourKeyBoxHeader"
+            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@+id/sending_created"
-            android:layout_toRightOf="@+id/sending_full_name"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_alignParentRight="true"
-            style="@android:style/TextAppearance.Holo.Small" android:gravity="right"/>
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content" android:layout_gravity="left">
+        <TextView
+                android:id="@+id/sending_full_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@+id/sending_full_name"
+                android:layout_gravity="left|center_vertical" android:layout_row="0"
+                android:layout_column="0"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                style="@android:style/TextAppearance.Medium"/>/>
 
-    <TextView
-            android:id="@+id/sending_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@+id/sending_email"
-            android:layout_below="@+id/sending_full_name"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
-            android:paddingBottom="10dp"
-            style="@android:style/TextAppearance.Holo.Small"/>
+        <TextView
+                android:id="@+id/sending_created"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@+id/sending_created"
+                android:layout_toRightOf="@+id/sending_full_name"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentRight="true"
+                style="@android:style/TextAppearance.Holo.Small" android:gravity="right"/>
 
-    <TextView
-            android:id="@+id/sending_short_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@+id/sending_short_id"
-            android:layout_below="@+id/sending_full_name"
-            android:layout_toRightOf="@+id/sending_email"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_alignParentRight="true"
-            style="@android:style/TextAppearance.Holo.Small" android:gravity="right"/>
+        <TextView
+                android:id="@+id/sending_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@+id/sending_email"
+                android:layout_below="@+id/sending_full_name"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:paddingBottom="10dp"
+                style="@android:style/TextAppearance.Holo.Small"/>
 
-</RelativeLayout>
+        <TextView
+                android:id="@+id/sending_short_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@+id/sending_short_id"
+                android:layout_below="@+id/sending_full_name"
+                android:layout_toRightOf="@+id/sending_email"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentRight="true"
+                style="@android:style/TextAppearance.Holo.Small" android:gravity="right"/>
+    </RelativeLayout>
+</LinearLayout>

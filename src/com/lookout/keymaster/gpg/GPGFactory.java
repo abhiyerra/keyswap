@@ -18,8 +18,11 @@ public class GPGFactory {
 
     public static void buildData() {
         keys = new ArrayList<Map<String, String>>();
-        ArrayList<GPGKey> publicKeys = GPGCli.getInstance().getPublicKeys();
-        for(GPGKey key : publicKeys) {
+        ArrayList<GPGKeyPair> keyPairs = GPGCli.getInstance().getKeyPairs();
+
+        for(GPGKeyPair keypair : keyPairs) {
+            GPGKey key = keypair.getPublicKey();
+
             keys.add(putData(key.getPrimaryKeyId().getUserId(), key.getKeyId(), key.getParentKey().getOwnerTrust().toString()));
         }
     }

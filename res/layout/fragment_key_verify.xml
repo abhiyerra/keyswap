@@ -4,21 +4,44 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+
     <TextView
+            android:id="@+id/exchangeVerifyPrompt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ready to verify!"
+            android:layout_gravity="left|center_vertical" android:layout_row="0"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/exchange_verify_prompt"
+            style="@android:style/TextAppearance.Holo.Large"
+            android:layout_alignParentTop="true">
+    </TextView>
+
+    <View
+            android:id="@+id/divider"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/exchangeVerifyPrompt"
+            android:background="@android:color/darker_gray"/>
+
+    <TextView
+            android:id="@+id/yourKeyBoxHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Your key:"
+            style="@android:style/TextAppearance.Holo.Medium"
             android:layout_gravity="left"/>
 
     <RelativeLayout
+            android:id="@+id/yourKeyBox"
+            android:layout_below="@+id/yourKeyBoxHeader"
             android:orientation="vertical"
             android:layout_width="wrap_content"
+            android:layout_marginRight="10dp"
             android:layout_height="wrap_content" android:layout_gravity="left">
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Your key:"
-                android:layout_gravity="center"/>
+
 
         <TextView
                 android:id="@+id/your_full_name"
@@ -67,15 +90,21 @@
 
     </RelativeLayout>
 
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Their key:"
+            style="@android:style/TextAppearance.Holo.Medium"
+            android:layout_gravity="left"/>
+
     <RelativeLayout
+            android:id="@+id/theirKeyBox"
             android:orientation="vertical"
             android:layout_width="wrap_content"
+            android:layout_below="@+id/yourKeyBox"
+            android:layout_marginRight="10dp"
             android:layout_height="wrap_content" android:layout_gravity="left">
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Their key:"
-                android:layout_gravity="center"/>
 
         <TextView
                 android:id="@+id/their_full_name"
@@ -128,5 +157,7 @@
             android:id="@+id/verify_key_button"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:text="Verify"/>
 </LinearLayout>

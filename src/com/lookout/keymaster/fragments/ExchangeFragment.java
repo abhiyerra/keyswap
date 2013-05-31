@@ -51,9 +51,6 @@ public class ExchangeFragment extends Fragment {
             }
         });
 
-        final TextView tv = (TextView) rootView.findViewById(R.id.exchangePrompt);
-        tv.setText(R.string.exchange_select_prompt);
-
         getActivity().setTitle(R.string.exchange);
 
         return rootView;
