@@ -20,10 +20,10 @@ public class GPGFactory {
         keys = new ArrayList<Map<String, String>>();
         ArrayList<GPGKeyPair> keyPairs = GPGCli.getInstance().getKeyPairs();
 
-        for(GPGKeyPair keypair : keyPairs) {
-            GPGKey key = keypair.getPublicKey();
+        for(GPGKeyPair keyPair : keyPairs) {
+            GPGKey key = keyPair.getPublicKey();
 
-            keys.add(putData(key.getPrimaryKeyId().getUserId(), key.getKeyId(), key.getParentKey().getOwnerTrust().toString()));
+            keys.add(putData(key.getPrimaryKeyId().getEmail(), key.getShortId(), key.getParentKey().getOwnerTrust().toString()));
         }
     }
 

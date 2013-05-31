@@ -82,7 +82,7 @@ public class GPGCli implements GPGBinding {
     public ArrayList<GPGKeyPair> getKeyPairs() {
         ArrayList<GPGKeyPair> keyPairs = new ArrayList<GPGKeyPair>();
 
-        ArrayList<GPGKey> secretKeys = this.getSecretKeys();
+        ArrayList<GPGKey> secretKeys = this.getPublicKeys();
         for(GPGKey secretKey : secretKeys) {
             GPGKey publicKey = this.getPublicKey(secretKey.getKeyId());
             GPGKeyPair keyPair = new GPGKeyPair(publicKey, secretKey);
@@ -97,7 +97,9 @@ public class GPGCli implements GPGBinding {
 
         if(scanner.hasNextLine() && !scanner.hasNext(keyRegex)) {
             scanner.nextLine();
-        } else if(!scanner.hasNextLine()) {
+        }
+
+        if(!scanner.hasNextLine()) {
             return null;
         }
 

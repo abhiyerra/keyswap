@@ -170,6 +170,19 @@ public class GPGRecord {
         return userId;
     }
 
+    public String getPersonalName() {
+        return this.getUserId().split("<")[0].trim();
+    }
+
+    public String getEmail() {
+        String[] userIdParts = this.getUserId().split("<");
+        if(userIdParts.length == 0) {
+            return null;
+        }
+
+        return "<" + userIdParts[1];
+    }
+
     private static TrustLevel ParseTrustLevel(char trust) {
         switch(trust) {
             case 'o':

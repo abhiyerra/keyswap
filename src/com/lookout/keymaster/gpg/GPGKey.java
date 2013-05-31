@@ -19,6 +19,15 @@ public class GPGKey {
         return parentKey.getKeyId();
     }
 
+    public String getShortId() {
+        String keyId = this.getKeyId();
+        if(keyId == null) {
+            return null;
+        }
+
+        return keyId.substring(Math.max(0, keyId.length() - 8));
+    }
+
     public GPGRecord getPrimaryKeyId() {
         if(userIds.isEmpty()) {
             return null;
