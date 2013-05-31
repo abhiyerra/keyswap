@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:text="@+id/label"
         android:textSize="20dp"
-        style="@android:style/TextAppearance.Holo.Inverse">
+        style="@android:style/TextAppearance.Holo.Medium.Inverse">
     </TextView>
 
 </LinearLayout>
