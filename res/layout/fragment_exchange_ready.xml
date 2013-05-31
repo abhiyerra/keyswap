@@ -30,38 +30,34 @@
                 android:id="@+id/sending_full_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Full Name"
                 android:layout_gravity="left|center_vertical"
-                android:layout_row="0"
-                android:layout_column="0"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:text="@+id/sending_full_name"
                 style="@android:style/TextAppearance.Medium"/>
 
         <TextView
                 android:id="@+id/sending_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Email Address"
                 android:layout_below="@+id/sending_full_name"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="@+id/sending_email"
-                android:layout_alignParentRight="true"
-                android:gravity="right"
+                android:layout_marginLeft="10dp"
+                android:paddingBottom="10dp"
                 style="@android:style/TextAppearance.Holo.Small"/>
 
         <TextView
                 android:id="@+id/sending_short_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/sending_full_name"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_toRightOf="@+id/sending_full_name"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
                 style="@android:style/TextAppearance.Holo.Small"
-                android:text="@+id/sending_short_id"
-                android:gravity="left" android:layout_alignParentTop="false"/>
+                android:text="Short ID"
+                android:gravity="right" android:layout_alignParentTop="false"/>
     </RelativeLayout>
 
     <TextView

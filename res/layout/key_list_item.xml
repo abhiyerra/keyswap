@@ -12,19 +12,19 @@
             android:id="@+id/full_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="John Doe"
+            android:text="Full Name"
             android:layout_gravity="left|center_vertical"
             android:layout_row="0"
             android:layout_column="0"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
-            style="@android:style/TextAppearance.Medium"/>/>
+            style="@android:style/TextAppearance.Medium"/>
 
     <TextView
             android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="john_doe@gmail.com"
+            android:text="Email Address"
             android:layout_below="@+id/full_name"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
@@ -40,7 +40,7 @@
             android:layout_marginRight="10dp"
             android:layout_alignParentRight="true"
             style="@android:style/TextAppearance.Holo.Small"
-            android:text="0AF4B6D0"
+            android:text="Short ID"
             android:gravity="right" android:layout_alignParentTop="false"/>
 
 </RelativeLayout>
