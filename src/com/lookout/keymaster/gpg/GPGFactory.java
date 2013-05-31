@@ -58,7 +58,7 @@ public class GPGFactory {
     }
 
     public static String getPublicKey() {
-        if(publicKey == null) {
+        if(publicKey != null) {
             return publicKey;
         } else {
             return "";

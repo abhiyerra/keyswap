@@ -172,23 +172,21 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
 
 
 
+    @Override
+    public void onNewIntent(Intent intent){
+        // onResume gets called after this to handle the intent
+        setIntent(intent);
+    }
 
 
     @Override
     public NdefMessage createNdefMessage(NfcEvent event){
         NdefMessage msg = new NdefMessage(
                 NdefRecord.createMime("application/vnd.com.lookout.keymaster.beam", GPGFactory.getPublicKey().getBytes()),
-                NdefRecord.createMime("application/vnd.com.lookout.keymaster.beam", GPGFactory.getSignedKey().getBytes()));
+                //NdefRecord.createMime("application/vnd.com.lookout.keymaster.beam", GPGFactory.getSignedKey().getBytes()),
+                NdefRecord.createApplicationRecord("com.lookout.keymaster"));
 
-        /**
-         * The Android Application Record (AAR) is commented out. When a device
-         * receives a push with an AAR in it, the application specified in the AAR
-         * is guaranteed to run. The AAR overrides the tag dispatch system.
-         * You can add it back in to guarantee that this
-         * activity starts when receiving a beamed message. For now, this code
-         * uses the tag dispatch system.
-         */
-        //,NdefRecord.createApplicationRecord("com.example.android.beam")
+
 
         return msg;
     }
@@ -211,7 +209,7 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
 
         // record 0 contains the MIME type, record 1 is the AAR, if present
         String messageReceived = new String(msg.getRecords()[0].getPayload());
-        String messageReceived2 = new String(msg.getRecords()[1].getPayload());
+        //String messageReceived2 = new String(msg.getRecords()[1].getPayload());
 
         Log.i("KeyMaster", "receivedmsg" + messageReceived);
 
