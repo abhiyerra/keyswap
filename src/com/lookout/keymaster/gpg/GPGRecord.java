@@ -180,7 +180,7 @@ public class GPGRecord {
             return null;
         }
 
-        return "<" + userIdParts[1];
+        return userIdParts[1].substring(0, userIdParts[1].length() - 1);
     }
 
     private static TrustLevel ParseTrustLevel(char trust) {

@@ -23,7 +23,7 @@ public class GPGFactory {
         for(GPGKeyPair keyPair : keyPairs) {
             GPGKey key = keyPair.getPublicKey();
             keys.add(putData(key.getPrimaryKeyId().getPersonalName(),
-                             key.getPrimaryKeyId().getPersonalName(),
+                             key.getPrimaryKeyId().getEmail(),
                              key.getShortId()));
         }
     }
