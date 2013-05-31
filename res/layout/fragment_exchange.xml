@@ -15,6 +15,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
+            android:text="@string/exchange_select_prompt"
             style="@android:style/TextAppearance.Holo.Large"
             android:layout_alignParentTop="true">
     </TextView>

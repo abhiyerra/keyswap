@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/public_key_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/keyExchange"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
                 android:orientation="vertical">
+
+    <TextView
+            android:id="@+id/exchangeSyncPrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical" android:layout_row="0"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/exchange_sync_prompt"
+            style="@android:style/TextAppearance.Holo.Large"
+            android:layout_alignParentTop="true">
+    </TextView>
+
+    <View
+            android:id="@+id/divider"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/exchangeSyncPrompt"
+            android:background="@android:color/darker_gray"/>
 
     <TextView
             android:id="@+id/sending_full_name"

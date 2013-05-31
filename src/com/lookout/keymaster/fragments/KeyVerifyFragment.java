@@ -15,6 +15,8 @@ import com.lookout.keymaster.R;
 public class KeyVerifyFragment extends Fragment {
     SimpleAdapter adapter;
 
+    View rootView;
+
     public KeyVerifyFragment() {
 
     }
@@ -23,10 +25,13 @@ public class KeyVerifyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_key_verify, container, false);
+        rootView = inflater.inflate(R.layout.fragment_key_verify, container, false);
 
-        TextView tv = (TextView)rootView.findViewById(R.id.their_email);
-        tv.setText(GPGFactory.getReceivedKey());
+        setTextForId(R.id.their_email, "");
+        setTextForId(R.id.their_full_name, "Abhi Yerra");
+        setTextForId(R.id.their_short_id, "1234");
+        setTextForId(R.id.their_created, "");
+
 
         Button verifyButton = (Button)rootView.findViewById(R.id.verify_key_button);
         verifyButton.setOnClickListener(new View.OnClickListener() {
@@ -42,5 +47,9 @@ public class KeyVerifyFragment extends Fragment {
         return rootView;
     }
 
+    private void setTextForId(int id, String txt) {
+        TextView tv = (TextView)rootView.findViewById(id);
+        tv.setText(txt);
+    }
 
 }
