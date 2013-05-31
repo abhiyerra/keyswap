@@ -6,6 +6,9 @@ import java.util.List;
 
 public interface GPGBinding {
 
+    GPGKey getPublicKey(String keyId);
+    GPGKey getSecretKey(String keyId);
+    
     List<GPGKey> getPublicKeys();
     List<GPGKey> getSecretKeys();
 

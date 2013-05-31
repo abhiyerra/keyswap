@@ -24,34 +24,37 @@ public class GPGCli implements GPGBinding {
         Log.i("LookoutPG", "GPGCli initialized");
     }
 
+    public GPGKey getPublicKey(String keyId) {
+        String rawList = Exec(GPG_PATH, "--with-colons", "--with-fingerprint", "--list-keys", keyId);
+        Log.i("LookoutPG", "Got public key: " + keyId);
+
+        Scanner scanner = new Scanner(rawList);
+        GPGKey key = parseKey(scanner, "pub:.*");
+        scanner.close();
+
+        return key;
+    }
+
+    public GPGKey getSecretKey(String keyId) {
+        String rawList = Exec(GPG_PATH, "--with-colons", "--with-fingerprint", "--list-secret-keys", keyId);
+        Log.i("LookoutPG", "Got secret key: " + keyId);
+
+        Scanner scanner = new Scanner(rawList);
+        GPGKey key = parseKey(scanner, "sec:.*");
+        scanner.close();
+
+        return key;
+    }
+
     public ArrayList<GPGKey> getPublicKeys() {
         String rawList = Exec(GPG_PATH, "--with-colons", "--with-fingerprint", "--list-keys");
         Log.i("LookoutPG", "Got public keys");
 
         ArrayList<GPGKey> keys = new ArrayList<GPGKey>();
         Scanner scanner = new Scanner(rawList);
-        while(scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            GPGRecord parentKey = GPGRecord.FromColonListingFactory(line);
-            if(parentKey.getType() == GPGRecord.Type.Public) {
-                GPGKey key = new GPGKey(parentKey);
-                keys.add(key);
-                while(scanner.hasNextLine() && !scanner.hasNext(Pattern.compile("pub:.*"))) {
-                    GPGRecord subRecord = GPGRecord.FromColonListingFactory(scanner.nextLine());
-                    switch(subRecord.getType()) {
-                        case UserId:
-                            key.addUserId(subRecord);
-                            break;
-                        case Sub:
-                            key.addSubKey(subRecord);
-                            break;
-                        case Fingerprint:
-                            //Fingerprint records use the userId field as the fingerprint
-                            key.setFingerprint(subRecord.getUserId());
-                            break;
-                    }
-                }
-            }
+        GPGKey key;
+        while((key = parseKey(scanner, "pub:.*")) != null) {
+            keys.add(key);
         }
         scanner.close();
 
@@ -64,32 +67,45 @@ public class GPGCli implements GPGBinding {
 
         ArrayList<GPGKey> keys = new ArrayList<GPGKey>();
         Scanner scanner = new Scanner(rawList);
-        while(scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            GPGRecord parentKey = GPGRecord.FromColonListingFactory(line);
-            if(parentKey.getType() == GPGRecord.Type.Secret) {
-                GPGKey key = new GPGKey(parentKey);
-                keys.add(key);
-                while(scanner.hasNextLine() && !scanner.hasNext(Pattern.compile("sec:.*"))) {
-                    GPGRecord subRecord = GPGRecord.FromColonListingFactory(scanner.nextLine());
-                    switch(subRecord.getType()) {
-                        case UserId:
-                            key.addUserId(subRecord);
-                            break;
-                        case SecretSub:
-                            key.addSubKey(subRecord);
-                            break;
-                        case Fingerprint:
-                            //Fingerprint records use the userId field as the fingerprint
-                            key.setFingerprint(subRecord.getUserId());
-                            break;
-                    }
-                }
-            }
+        GPGKey key;
+        while((key = parseKey(scanner, "sec:.*")) != null) {
+            keys.add(key);
         }
         scanner.close();
 
         return keys;
+    }
+
+    private GPGKey parseKey(Scanner scanner, String keyDelimiter) {
+        Pattern keyRegex = Pattern.compile(keyDelimiter);
+
+        if(scanner.hasNextLine() && !scanner.hasNext(keyRegex)) {
+            scanner.nextLine();
+        } else if(!scanner.hasNextLine()) {
+            return null;
+        }
+
+        String line = scanner.nextLine();
+        GPGRecord parentKey = GPGRecord.FromColonListingFactory(line);
+        GPGKey key = new GPGKey(parentKey);
+
+        while(scanner.hasNextLine() && !scanner.hasNext(keyRegex)) {
+            GPGRecord subRecord = GPGRecord.FromColonListingFactory(scanner.nextLine());
+            switch(subRecord.getType()) {
+                case UserId:
+                    key.addUserId(subRecord);
+                    break;
+                case Fingerprint:
+                    //Fingerprint records use the userId field as the fingerprint
+                    key.setFingerprint(subRecord.getUserId());
+                    break;
+                default:
+                    key.addSubKey(subRecord);
+                    break;
+            }
+        }
+
+        return key;
     }
 
     public void signKey(String fingerprint, TrustLevel trustLevel) {
