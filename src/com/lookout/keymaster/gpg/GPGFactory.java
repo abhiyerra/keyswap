@@ -22,16 +22,17 @@ public class GPGFactory {
 
         for(GPGKeyPair keyPair : keyPairs) {
             GPGKey key = keyPair.getPublicKey();
-
-            keys.add(putData(key.getPrimaryKeyId().getEmail(), key.getShortId(), key.getParentKey().getOwnerTrust().toString()));
+            keys.add(putData(key.getPrimaryKeyId().getPersonalName(),
+                             key.getPrimaryKeyId().getPersonalName(),
+                             key.getShortId()));
         }
     }
 
-    public static HashMap<String, String> putData(String name, String key_id, String trust_level) {
+    public static HashMap<String, String> putData(String personalName, String email, String shortId) {
         HashMap<String, String> item = new HashMap<String, String>();
-        item.put("full_name", name);
-        item.put("key_id", key_id);
-        item.put("trust_level", trust_level);
+        item.put("full_name", personalName);
+        item.put("email", email);
+        item.put("short_id", shortId);
         return item;
     }
 

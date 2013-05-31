@@ -36,8 +36,8 @@ public class ExchangeFragment extends Fragment {
         GPGFactory.buildData();
 
         final ListView lv = (ListView) rootView.findViewById(R.id.keyToShare);
-        String[] from = { "full_name", "key_id", "", "" };
-        int[] to = { R.id.full_name, R.id.short_id, R.id.email, R.id.created };
+        String[] from = { "full_name", "short_id", "email" };
+        int[] to = { R.id.full_name, R.id.short_id, R.id.email };
         adapter = new SimpleAdapter(rootView.getContext(), GPGFactory.getKeys(), R.layout.key_list_item, from, to);
         lv.setAdapter(adapter);
 
@@ -46,7 +46,7 @@ public class ExchangeFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 lv.getItemAtPosition(i);
                 Map<String, String> keyAtPosition = GPGFactory.getKeys().get(i);
-                String pgp_key_id = keyAtPosition.get("key_id");
+                String pgp_key_id = keyAtPosition.get("short_id");
 
                 new SelectKeyTask(pgp_key_id).execute();
             }
