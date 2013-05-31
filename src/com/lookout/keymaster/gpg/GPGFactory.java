@@ -37,7 +37,9 @@ public class GPGFactory {
 
     public static HashMap<String, String> getKeyByKeyId(String key_id) {
 
-        HashMap<String, String> new HashMap<String, String>();
+        HashMap<String, String> x = new HashMap<String, String>();
+
+        return x;
     }
     public static void setReceivedKey(String key, String key_id) {
         receivedKey = key;
