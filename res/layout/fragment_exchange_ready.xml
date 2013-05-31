@@ -14,14 +14,7 @@
             style="@android:style/TextAppearance.Holo.Large"
             android:layout_alignParentTop="true" android:layout_margin="10dp">
     </TextView>
-    <!--
-    <View
-            android:id="@+id/divider"
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/exchangeSyncPrompt"
-            android:background="@android:color/darker_gray"/>
-    -->
+
     <RelativeLayout
             android:id="@+id/sendSignedBox"
             android:layout_below="@+id/yourKeyBoxHeader"
@@ -49,9 +42,10 @@
                 android:id="@+id/sending_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/sending_full_name"
-                android:layout_marginTop="10dp"
+                android:layout_below="@+id/sending_full_name"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
                 android:text="@+id/sending_email"
                 android:layout_alignParentRight="true"
                 android:gravity="right"
