@@ -21,20 +21,6 @@ public class GPGRecord {
         SignatureSubpacket
     }
 
-    public enum TrustLevel {
-        New,
-        Invalid,
-        Disabled,
-        Revoked,
-        Expired,
-        Unknown,
-        Undefined,
-        None,
-        Marginal,
-        Full,
-        Ultimate
-    }
-
     public enum Algorithm {
         RSA,
         ElgamalEncrypt,
