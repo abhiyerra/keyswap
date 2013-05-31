@@ -52,7 +52,7 @@ public class GPGFactory {
 
     public static void setPublicKey(String pgp_key_id) {
         publicKeyId = pgp_key_id;
-        publicKey = GPGCli.getInstance().keyAsAsciiArmor(publicKeyId);
+        publicKey = GPGCli.getInstance().exportAsciiArmoredKey(publicKeyId);
 
         Log.i("KeyMaster", publicKey);
     }

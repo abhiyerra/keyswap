@@ -17,5 +17,6 @@ public interface GPGBinding {
 
     void pushToKeyServer(String server, String keyId);
 
-    String keyAsAsciiArmor(String keyId);
+    String exportAsciiArmoredKey(String keyId);
+    void importAsciiArmoredKey(String armoredKey);
 }
