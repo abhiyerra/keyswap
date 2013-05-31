@@ -65,6 +65,8 @@ public class GPGKey {
             sb.append(groups[i]);
             if(i == 4) {
                 sb.append("\n");
+            } else if(i != 9) {
+                sb.append(" ");
             }
         }
 
