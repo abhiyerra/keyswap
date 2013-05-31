@@ -76,6 +76,18 @@ public class GPGCli implements GPGBinding {
         return keys;
     }
 
+    public ArrayList<GPGKeyPair> getKeyPairs() {
+        ArrayList<GPGKeyPair> keyPairs = new ArrayList<GPGKeyPair>();
+
+        ArrayList<GPGKey> secretKeys = this.getSecretKeys();
+        for(GPGKey secretKey : secretKeys) {
+            GPGKey publicKey = this.getPublicKey(secretKey.getKeyId());
+            GPGKeyPair keyPair = new GPGKeyPair(publicKey, secretKey);
+        }
+
+        return keyPairs;
+    }
+
     private GPGKey parseKey(Scanner scanner, String keyDelimiter) {
         Pattern keyRegex = Pattern.compile(keyDelimiter);
 
