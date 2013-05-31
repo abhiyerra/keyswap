@@ -29,7 +29,6 @@
 
                 <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="application/vnd.com.lookout.keymaster.beam"/>
             </intent-filter>
         </activity>
     </application>

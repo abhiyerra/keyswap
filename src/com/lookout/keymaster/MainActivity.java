@@ -70,9 +70,7 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
                 "Exchange Keys",
                 "Sync Keyring",
                 "Public Keys",
-                "Private Keys",
-                "READY TO VERIFY",
-                "SERVER PUSH"
+                "Private Keys"
         };
 
         MenuArrayAdapter adapter2 = new MenuArrayAdapter(this, values);
