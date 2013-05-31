@@ -29,7 +29,7 @@ public class GPGRecord {
         Expired,
         Unknown,
         Undefined,
-        Valid,
+        None,
         Marginal,
         Full,
         Ultimate
