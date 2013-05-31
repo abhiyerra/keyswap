@@ -62,12 +62,12 @@
                 android:text="@+id/your_fingerprint"
                 android:layout_below="@+id/your_full_name"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_alignParentRight="true"
                 android:typeface="monospace"
-                style="@android:style/TextAppearance.Holo.Medium" android:gravity="right"
-                android:layout_marginBottom="20dp"/>
+                style="@android:style/TextAppearance.Holo.Medium"
+                android:layout_marginBottom="20dp" android:gravity="center_horizontal"/>
 
     </RelativeLayout>
 
@@ -107,11 +107,11 @@
                 android:text="@+id/their_fingerprint"
                 android:layout_below="@+id/their_full_name"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_alignParentRight="true"
                 android:typeface="monospace"
-                style="@android:style/TextAppearance.Holo.Medium" android:gravity="right"
+                style="@android:style/TextAppearance.Holo.Medium" android:gravity="center_horizontal"
                 android:layout_marginBottom="20dp"/>
 
     </RelativeLayout>
