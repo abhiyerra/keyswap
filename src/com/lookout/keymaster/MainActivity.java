@@ -73,11 +73,11 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
                 "Private Keys"
         };
 
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getApplicationContext(),
-                android.R.layout.simple_list_item_1, values);
+        MenuArrayAdapter adapter2 = new MenuArrayAdapter(this, values);
+        lv2.setAdapter(adapter2);
         lv2.setOnItemClickListener(new DrawerItemClickListener());
 
-        lv2.setAdapter(adapter2);
+
     }
 
     private void loadHomeFragment() {
