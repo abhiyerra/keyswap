@@ -1,6 +1,7 @@
 package com.lookout.keymaster.fragments;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -66,8 +67,14 @@ public class ExchangeFragment extends Fragment {
 
             return null;
         }
+
+        protected void onPostExecute(Void result) {
+            Fragment fragment = new ExchangeReadyFragment();
+
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "exchange_ready").commit();
+        }
+
     }
-
-
 
 }

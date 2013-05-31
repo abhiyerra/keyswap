@@ -18,10 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-import com.lookout.keymaster.fragments.ExchangeFragment;
-import com.lookout.keymaster.fragments.HomeFragment;
-import com.lookout.keymaster.fragments.KeyFragment;
-import com.lookout.keymaster.fragments.KeyVerifyFragment;
+import com.lookout.keymaster.fragments.*;
 import com.lookout.keymaster.gpg.GPGFactory;
 import com.lookout.keymaster.gpg.KeyringSyncManager;
 
@@ -118,6 +115,13 @@ public class MainActivity extends Activity  implements NfcAdapter.CreateNdefMess
 
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "key_verify").commit();
+    }
+
+    private void loadExchangeReadyFragment() {
+        fragment = new ExchangeReadyFragment();
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "exchange_ready").commit();
     }
 
     /* The click listner for ListView in the navigation drawer */
